@@ -1,0 +1,87 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Models\ProdukModel;
+
+class Produk extends BaseController
+{
+    protected $produkModel;
+
+    public function __construct()
+    {
+        $this->produkModel = new ProdukModel();   
+        helper('form'); 
+    }
+
+    public function index()
+    {
+        $data = [
+            'title' => 'Tambah Produk',
+            'all_data' => $this->produkModel->select_data() // selecting all data
+        ];
+
+        return view('produk/index', $data);
+    }
+
+    public function add_data()
+    {
+        // membuat validation
+        $rules = $this->validate([
+            'name'      => 'required',
+            'category'  => 'required',
+            'quantity'  => 'required|numeric',
+            'sku'       => 'required|numeric'
+        ]);
+
+        if (!$rules) {
+            session()->setFlashData('failed', \Config\Services::validation()->getErrors());
+            return redirect()->back();
+        }
+
+        $data = [
+            'name'      => $this->request->getPost('name'),
+            'category'  => $this->request->getPost('category'),
+            'quantity'  => $this->request->getPost('quantity'),
+            'sku'       => $this->request->getPost('sku')
+        ];
+
+        $this->produkModel->add_data($data);
+        session()->setFlashData('Success', 'data has been added to database.');
+        return redirect()->back();
+    }
+
+    public function delete_data($id)
+    {
+        $this->produkModel->delete_data($id);
+        session()->setFlashData('Success', 'data has been deleted from database.');
+        return redirect()->back();
+    }
+
+    public function update_data($id)
+    {
+        // validation
+        $rules = $this->validate([
+            'name'      => 'required',
+            'category'  => 'required',
+            'quantity'  => 'required',
+            'sku'       => 'required|numeric',
+        ]);
+
+        if (!$rules) {
+            session()->setFlashData('failed', \Config\Services::validation()->getErrors());
+            return redirect()->back();
+        }
+
+        $data = [
+            'name'      => $this->request->getPost('name'),
+            'category'  => $this->request->getPost('category'),
+            'quantity'  => $this->request->getPost('quantity'),
+            'sku'       => $this->request->getPost('sku'),
+        ];
+
+        $this->produkModel->update_data($id, $data);
+        session()->setFlashData('Success', 'data has been updated from database.');
+        return redirect()->back();
+    }
+}

@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+// Default Name BuilderModel.php
+class ProdukModel extends Model
+{
+    protected $db, $produk;
+
+    public function __construct()
+    {
+        $this->db = \Config\Database::connect();
+        $this->produk = $this->db->table('produk'); // pilih tabel nya   
+    }
+
+    // func select all data or by id
+    public function select_data($id = FALSE)
+    {
+        if ($id == FALSE) {
+            return $this->produk->get()->getResultObject();
+        }
+
+        return $this->produk->getWhere(['id' => $id])->getRow();
+    }
+
+    // func insert data to db
+    public function add_data($data)
+    {
+        $this->produk->insert($data);
+    }
+
+    // func delete data from db
+    public function delete_data($id)
+    {
+        $this->produk->where('id', $id);
+        $this->produk->delete();
+    }
+
+    // func update data from db
+    public function update_data($id, $data)
+    {
+        $this->produk->where('id', $id);
+        $this->produk->update($data);
+    }
+}
