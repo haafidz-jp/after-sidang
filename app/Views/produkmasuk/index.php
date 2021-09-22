@@ -101,7 +101,7 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Nama Produk</label>
-                        <select name="kodeProduk" id="kodeProduk" class="form-control" required>
+                        <select name="kode_produk" id="kodeProduk" class="form-control" required>
                         <option value="">- Pilih Produk -</option>
                             <?php foreach($get_produk as $row) { ?>
                                 <option value="<?php echo $row->kode_produk;?>">
