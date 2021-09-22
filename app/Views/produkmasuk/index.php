@@ -155,10 +155,8 @@
                     async : true,
                     dataType : 'json',
                     success: function(data){
-    //                     var json = data,
-    //                     obj = JSON.parse(json);
-                        $( "#stokAwal" ).val( data.kuantitas ); 
-                        // $(stokAwal).attr(value,value) 
+                        // console.log(data[0].kuantitas);
+                        $( "#stokAwal" ).val( data[0].kuantitas ); 
                         // autofill form stok awal when user click pilih barang
                     }
                 });
