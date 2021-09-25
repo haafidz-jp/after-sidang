@@ -21,7 +21,6 @@ class Produk_Masuk extends BaseController
             'all_data' => $this->produkMasukModel->select_data(), // selecting all data
             'get_kode_transaksi' => $this->produkMasukModel->get_kode_transaksi(),
             'get_produk' => $this->produkMasukModel->get_produk(),
-            // 'get_stok' => $this->produkMasukModel->get_stok(),
             
         ];
 
@@ -31,37 +30,10 @@ class Produk_Masuk extends BaseController
     // mengambil stok berdasarkan pilihan
     public function get_stok()
     {
-        // metode RAW Query
-        // $query = $this->db->query('SELECT kuantitas FROM produk WHERE kode_produk = "PR000001"');
-        // return $query->getRow();
-        
-        // $this->db = \Config\Database::connect();
-        // return $this->db->table('produk')->get()->getResultObject();
-
-        // WORKS
-        // $data = $this->produkMasukModel->get_stok("PR000001");
-        // echo json_encode($data);
-
-        // echo 'route tersambung';
-
-        // coba coba builder
-        // $data = $this->db->table('produk')
-        // ->where('kode_produk', $this->request->getVar('kode_produk'))
-        // ->get()->getResultObject();
-        // findAll();
-        // echo json_encode($data);
-
-        // coba coba (2)
-        // return $this->db->table('produk')
-        // ->select('kuantitas')
-        // ->where(array('kode_produk' => 'PR000001'))
-        // ->get()->getResultObject();
-
-        $data = $this->db->table('produk')->select('kuantitas, kode_produk, name')
+        $data = $this->db->table('produk')->select('kuantitas')
         ->where('kode_produk', $this->request->getVar('kode_produk'))
         ->get()->getResultObject();
-        // ->get()->getResultObject();
-        // findAll();
+
         echo json_encode($data);
     }
 
@@ -88,7 +60,15 @@ class Produk_Masuk extends BaseController
         ];
 
         $this->produkMasukModel->add_data($data);
-        session()->setFlashData('success', 'data has been added to database.');
+
+        // update stok 
+        $this->db->table('produk')
+        ->where('kode_produk', $this->request->getVar('kode_produk'))
+            ->set('kuantitas', $this->request->getVar('jumlah_masuk'))
+            ->update();
+
+        session()->setFlashData('Sukses', 'data has been added to database.');
         return redirect()->back();
+        
     }
 }

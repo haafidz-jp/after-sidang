@@ -114,17 +114,16 @@
                     </div>
                     <div class="form-group">
                         <label for="category">Kategori</label>
-                        <!-- <select class="search form-control" name="search" id="category"></select> -->
                         <select name="category" id="category" class="form-control" required>
-                        <option value="">No Selected</option>
-                        <?php foreach($category as $row):?>
-				    	<option value="<?php echo $row->category_id;?>">
-                        <?php echo $row->category_name;?></option>
-				    	<?php endforeach;?>
+                            <option value="">No Selected</option>
+                            <?php foreach($category as $row):?>
+                            <option value="<?php echo $row->category_id;?>">
+                            <?php echo $row->category_name;?></option>
+                            <?php endforeach;?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="category">Sub Category</label>
+                        <label for="category">Sub Kategory</label>
                         <select name="sub_category" id="sub_category" class="form-control" >
                             <option value="">- Pilih Sub Kategori -</option>
                         </select>
@@ -183,32 +182,24 @@
                             <input type="text" name="name" id="name" class="form-control" value="<?= $datas->name; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="categ">Kategori</label>
-                            <select name="category" id="categ" class="form-control">
-                                <?php if ($categ = $datas->category ?? $datas->category) : ?>
-                                    <option value="">- Select -</option>
-                                    <option value="Alat Tulis" <?= $categ == 'Alat Tulis' ? 'selected' : null ?>>
-                                        Alat Tulis
-                                    </option>
-                                    <option value="Buku Tulis" <?= $categ == 'Buku Tulis' ? 'selected' : null ?>>
-                                        Buku Tulis
-                                    </option>
-                                    <option value="Document Organizer" <?= $categ == 'Document Organizer' ? 'selected' : null ?>>
-                                        Document Organizer
-                                    </option>
-                                    <option value="Kertas" <?= $categ == 'Kertas' ? 'selected' : null ?>>
-                                        Kertas
-                                    </option>
-                                    <option value="Lain-Lain" <?= $categ == 'Lain-Lain' ? 'selected' : null ?>>
-                                        Lain-Lain
-                                    </option>
-                                    <option value="Pengikat & Perekat" <?= $categ == 'Pengikat & Perekat' ? 'selected' : null ?>>
-                                        Pengikat & Perekat
-                                    </option>
-                                    <option value="Surat-Menyurat" <?= $categ == 'Surat-Menyurat' ? 'selected' : null ?>>
-                                        Surat-Menyurat
-                                    </option>
-                                <?php endif; ?>
+                            <label for="upcategory">Kategori</label> <br>
+                            <select name="upcategory" id="upcategory" class="form-control">
+                                <option value="">- Pilih Kategori -</option>
+                                <?php foreach($category as $row):?>
+                                <?php if($row->category_id == $datas->category):?>
+                                <option value="<?php echo $row->category_id;?>" selected>
+                                    <?php else: ?>
+                                        <option value="<?php echo $row->category_id;?>">
+                                    <?php endif;?>
+                                <?php echo $row->category_name;?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="upsubcategory">Sub Kategori</label> <br>
+                            <?php echo $datas->sub_category; ?>
+                            <select name="upsub_category" id="upsub_category" class="form-control" value="">
+                                <option value="">- Pilih Sub Kategori -</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -281,32 +272,55 @@
     <?php endforeach; ?>
 
     <script type="text/javascript">
-        $(document).ready(function(){
- 
-            $('#category').change(function(){ 
-                //var id=$(this).val();
-                var subcategory_category_id = $("#category").val();
-                $.ajax({
-                    url : "<?php echo base_url('produk/get_sub_category');?>",
-                    method : "POST",
-                    data : {subcategory_category_id: subcategory_category_id,},
-                    async : true,
-                    dataType : 'json',
-                    success: function(data){
-                         
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].subcategory_id+'>'+data[i].subcategory_id+ " | " +data[i].subcategory_name+'</option>';
-                        }
-                        $('#sub_category').html(html);
- 
-                    }
-                });
-                return false;
-            }); 
-             
-        });
-    </script>
+        $(document).ready(function(){
+
+            $('#category').change(function(){
+
+                var subcategory_category_id = $("#category").val();
+
+                $.ajax({
+                    url : "<?php echo base_url('produk/get_sub_category');?>",
+                    method : "POST",
+                    data : {subcategory_category_id: subcategory_category_id,},
+                    async : true,
+                    dataType : 'JSON',
+                    success: function(data){
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].subcategory_id+'>'+data[i].subcategory_id+ " | " +data[i].subcategory_name+'</option>';
+                        }
+                        $('#sub_category').html(html);
+                    }
+                });
+                return false;
+            });
+
+            $('#upcategory').change(function(){
+
+                var subcategory_category_id = $("#upcategory").val();
+                var selected = $("#upsub_category").val();
+                console.log(selected);
+                $.ajax({
+                    url : "<?php echo base_url('produk/get_sub_category');?>",
+                    method : "POST",
+                    data : {subcategory_category_id: subcategory_category_id,},
+                    async : true,
+                    dataType : 'JSON',
+                    success: function(data){
+                        var html = '';
+                        var i;
+                            for(i=0; i<data.length; i++){
+
+                                html += '<option value='+data[i].subcategory_id+'>'+data[i].subcategory_id+ " | " +data[i].subcategory_name+'</option>';
+                            }
+
+                        $('#upsub_category').html(html);
+                    }
+                });
+                return false;
+                });
+        });
+    </script>
 
     <?= $this->endSection(); ?>

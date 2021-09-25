@@ -18,9 +18,9 @@ class Produk extends BaseController
     {
         $data = [
             'title' => 'Daftar Produk', // Nama Halaman
-            'all_data' => $this->produkModel->select_data(), // selecting all data
-            'category' => $this->produkModel->get_category(),
-            'get_kobar' => $this->produkModel->get_kobar(),
+            'all_data' => $this->produkModel->select_data(), // Select All Data
+            'category' => $this->produkModel->get_category(), // select all category
+            'get_kobar' => $this->produkModel->get_kobar(), // produksi kode barang
             
         ];
 
@@ -29,17 +29,11 @@ class Produk extends BaseController
 
     // ambil sub_kategori
     public function get_sub_category(){
-        
-		// $category_id = $request->getVar('subcategory_category_id',TRUE);
-		// $data = $this->produkModel->get_sub_category($category_id);
-		// echo json_encode($data);
-
-        // $kodecari = $this->request->getVar('id');
 
         $data = $this->db->table('sub_category')
         ->where('subcategory_category_id', $this->request->getVar('subcategory_category_id'))
         ->get()->getResultObject();
-        // findAll();
+
         echo json_encode($data);
 	}
 
@@ -91,7 +85,8 @@ class Produk extends BaseController
         $rules = $this->validate([
             'kode_produk'   => 'required',
             'name'          => 'required',
-            'category'      => 'required',
+            'upcategory'    => 'required',
+            'upsub_category'=> 'required',
             'merk'          => 'required',
             // 'kuantitas'     => 'required',
             'satuan'        => 'required',
@@ -106,7 +101,8 @@ class Produk extends BaseController
         $data = [
             'kode_produk'   => $this->request->getPost('kode_produk'),
             'name'          => $this->request->getPost('name'),
-            'category'      => $this->request->getPost('category'),
+            'category'      => $this->request->getPost('upcategory'),
+            'sub_category'  => $this->request->getPost('upsub_category'),
             'merk'          => $this->request->getPost('merk'),
             // 'kuantitas'     => $this->request->getPost('kuantitas'),
             'satuan'        => $this->request->getPost('satuan'),

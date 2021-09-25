@@ -12,6 +12,7 @@ class ProdukMasukModel extends Model
     {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('produk_masuk');  
+        $this->builderprod = $this->db->table('produk');  
     }
 
     // mengambil produk
@@ -21,17 +22,17 @@ class ProdukMasukModel extends Model
     }
 
     // 
-    public function get_stok($kode_produk)
-    {
-        $query = $this->db->query('SELECT kuantitas FROM produk WHERE kode_produk = "PR000001"');
-        return $query->getRow(); //fungsi getRow ialah return single row
+    // public function get_stok($kode_produk)
+    // {
+    //     // $query = $this->db->query('SELECT kuantitas FROM produk WHERE kode_produk = "PR000001"');
+    //     // return $query->getRow(); //fungsi getRow ialah return single row
         
-        // $query = $this->db->query('SELECT kuantitas FROM produk WHERE kode_produk = kode_produk');
-        // return $query->getRow(); //fungsi getRow ialah return single row
+    //     // $query = $this->db->query('SELECT kuantitas FROM produk WHERE kode_produk = kode_produk');
+    //     // return $query->getRow(); //fungsi getRow ialah return single row
         
-        // $this->db->table('produk')->getWhere(['kode_produk' => $kode_produk])->getRow();
+    //     // $this->db->table('produk')->getWhere(['kode_produk' => $kode_produk])->getRow();
 
-    }
+    // }
 
     // membuat kode transaksi
     public function get_kode_transaksi(){
