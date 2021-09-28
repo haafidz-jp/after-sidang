@@ -19,8 +19,6 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="<?= base_url('jquery/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('css/sb-admin-2.min.css')?>" rel="stylesheet">
@@ -150,7 +148,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
     <script src="<?= base_url('jquery/jquery.min.js') ?>"></script>
     <script src="<?= base_url('bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 

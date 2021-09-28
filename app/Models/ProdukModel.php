@@ -19,7 +19,12 @@ class ProdukModel extends Model
     {
         return $this->db->table('category')->get()->getResultObject();
     }
-
+    
+    // ambil sub kategori
+    public function get_subcategory() 
+    {
+        return $this->db->table('sub_category')->get()->getResultObject();
+    }
     // ambil sub-kategori
     // public function get_sub_category($category_id){
 		

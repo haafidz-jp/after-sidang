@@ -17,14 +17,13 @@
                 <div class="card-body">
                     <a href="" class="btn btn-primary btn-sm mb-2" data-toggle="modal" data-target="#addModal"><i class="fas fa-plus-square"></i> Tambah Data</a>
                     <a href=<?= base_url('export-pdf'); ?> class="btn btn-primary btn-sm mb-2 fa fa-file-pdf"> Cetak Laporan </a>
-                    <!--<a href=<?= base_url('export-excel'); ?> class="btn btn-primary btn-sm mb-2 fa fa-file-excel"> Export Excel</a>-->
 
 
                     <?php
-                    $errors = session()->getFlashdata('Failed');
+                    $errors = session()->getFlashdata('gagal');
                     if (!empty($errors)) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong><i class="fas fa-times"></i> Failed</strong> data not added to database.
+                            <strong><i class="fas fa-times"></i> Gagal</strong> data tidak di tambahkan ke database.
                             <ul>
                                 <?php foreach ($errors as $e) { ?>
                                     <li><?= esc($e); ?></li>
@@ -36,9 +35,9 @@
                         </div>
                     <?php endif; ?>
 
-                    <?php if (session()->getFlashData('success')) : ?>
+                    <?php if (session()->getFlashData('sukses')) : ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong><i class="fas fa-check"></i> Sukses</strong> <?= session()->getFlashData('success'); ?>
+                            <strong><i class="fas fa-check"></i> Sukses</strong> <?= session()->getFlashData('sukses'); ?>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -50,7 +49,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Kode Produk</th>
-                                    <th>Name</th>
+                                    <th>Nama Produk</th>
                                     <th>Kategori</th>
                                     <th>Sub Kategori</th>
                                     <th>Merk</th>
@@ -196,10 +195,18 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="upsubcategory">Sub Kategori</label> <br>
+                            <label for="upsub_category">Sub Kategori</label> <br>
                             <?php echo $datas->sub_category; ?>
-                            <select name="upsub_category" id="upsub_category" class="form-control" value="">
+                            <select name="upsub_category" id="upsub_category" class="form-control">
                                 <option value="">- Pilih Sub Kategori -</option>
+                                <?php foreach($sub_category as $row):?>
+                                <?php if($row->subcategory_id == $datas->sub_category):?>
+                                <option value="<?php echo $row->subcategory_id;?>" selected>
+                                    <?php else: ?>
+                                        <option value="<?php echo $row->subcategory_id;?>">
+                                    <?php endif;?>
+                                <?php echo $row->subcategory_name;?></option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <div class="form-group">
@@ -298,13 +305,14 @@
 
             $('#upcategory').change(function(){
 
-                var subcategory_category_id = $("#upcategory").val();
+                var subcategory_category_idd = $("#upcategory").val();
                 var selected = $("#upsub_category").val();
+                
                 console.log(selected);
                 $.ajax({
                     url : "<?php echo base_url('produk/get_sub_category');?>",
                     method : "POST",
-                    data : {subcategory_category_id: subcategory_category_id,},
+                    data : {subcategory_category_id: subcategory_category_idd,},
                     async : true,
                     dataType : 'JSON',
                     success: function(data){
@@ -319,7 +327,7 @@
                     }
                 });
                 return false;
-                });
+            });
         });
     </script>
 

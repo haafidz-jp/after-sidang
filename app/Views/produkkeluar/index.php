@@ -21,10 +21,10 @@
 
 
                     <?php
-                    $errors = session()->getFlashdata('Failed');
+                    $errors = session()->getFlashdata('gagal');
                     if (!empty($errors)) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong><i class="fas fa-times"></i> Failed</strong> data not added to database.
+                            <strong><i class="fas fa-times"></i> Gagal</strong> data tidak di tambahkan ke database.
                             <ul>
                                 <?php foreach ($errors as $e) { ?>
                                     <li><?= esc($e); ?></li>
@@ -36,9 +36,9 @@
                         </div>
                     <?php endif; ?>
 
-                    <?php if (session()->getFlashData('success')) : ?>
+                    <?php if (session()->getFlashData('sukses')) : ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong><i class="fas fa-check"></i> Sukses</strong> <?= session()->getFlashData('success'); ?>
+                            <strong><i class="fas fa-check"></i> Sukses</strong> <?= session()->getFlashData('sukses'); ?>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -62,10 +62,10 @@
                                 foreach ($all_data as $datas) : ?>
                                     <tr>
                                         <td width="1%"><?= $no++; ?></td>
-                                        <td><?= esc($datas->kode_transaksi); ?></td>
-                                        <td><?= esc($datas->tanggal); ?></td>
-                                        <td><?= esc($datas->kode_produk); ?></td>
-                                        <td><?= esc($datas->nama_produk); ?></td>
+                                        <td width='150'><?= esc($datas->kode_transaksi); ?></td>
+                                        <td width='100'><?= esc($datas->tanggal); ?></td>
+                                        <td width='150'><?= esc($datas->kode_produk); ?></td>
+                                        <td width='300'><?= esc($datas->name); ?></td>
                                         <td><?= esc($datas->jumlah_keluar); ?></td>
                                         <td><?= esc($datas->satuan); ?></td>
                                     </tr>
@@ -101,19 +101,28 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Nama Produk</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Masukan Nama Produk" required>
+                        <select name="kode_produk" id="kodeProduk" class="form-control" required>
+                        <option value="">- Pilih Produk -</option>
+                            <?php foreach($get_produk as $row) { ?>
+                                <option value="<?php echo $row->kode_produk;?>">
+                                    <?php echo $row->kode_produk;?> |
+                                    <?php echo $row->name;?>
+                                </option>
+                            <?php } 
+                            ?>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="stok">Stok</label>
-                        <input type="text" name="stok" id="stok" class="form-control" required readonly>
+                        <label for="stokAwal">Stok</label>
+                        <input type="text" name="" id="stokAwal" class="form-control" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="jumlah_keluar">Jumlah Keluar</label>
-                        <input type="text" name="jumlah_keluar" id="jumlah_keluar" class="form-control" placeholder="Masukan jumlah barang yang masuk">
+                        <label for="jumlah_keluar">Jumlah Barang keluar</label>
+                        <input type="number" name="jumlah_keluar" id="jumlah_keluar" class="form-control" placeholder="Masukan jumlah barang yang masuk">
                     </div>
                     <div class="form-group">
                         <label for="total_stok">Total Stok</label>
-                        <input type="text" name="total_stok" id="total_stok" class="form-control" required readonly>
+                        <input type="number" name="total_stok" id="total_stok" class="form-control" required readonly>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -124,5 +133,37 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+    $("#jumlah_keluar").keyup(function(){
+        var a = parseInt($("#stokAwal").val());
+        var b = parseInt($("#jumlah_keluar").val());
+        var c = a - b;
+        $("#total_stok").val(c);
+    });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+ 
+            $('#kodeProduk').change(function(){ 
+                var kode_produk = $("#kodeProduk").val();
+                $.ajax({
+                    url : "<?php echo base_url('produk_masuk/get_stok');?>",
+                    method : "POST",
+                    data : {kode_produk: kode_produk,},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                        // console.log(data[0].kuantitas);
+                        $( "#stokAwal" ).val( data[0].kuantitas ); 
+                        // autofill form stok awal when user click pilih barang
+                    }
+                });
+                return false;
+            }); 
+             
+        });
+    </script>
 
 <?= $this->endSection(); ?>

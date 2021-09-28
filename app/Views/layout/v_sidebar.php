@@ -85,10 +85,9 @@
         <div id="collapseExport" class="collapse" aria-labelledby="headingExport" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
-                <a class="collapse-item" href=<?= base_url('export-pdf'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Daftar Produk</a>
-                <a class="collapse-item" href=<?= base_url('export-pdf'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Produk Masuk</a>
-                <a class="collapse-item" href=<?= base_url('export-pdf'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Produk Keluar</a>
-                <!--<a class="collapse-item" href=<?= base_url('export-excel'); ?>><i class="fas fa-fw fa-file-excel"></i> Export as Excel</a>-->
+                <a class="collapse-item" href=<?= base_url('/cetakproduk'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Daftar Produk</a>
+                <a class="collapse-item" href=<?= base_url('/cetakmasuk'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Produk Masuk</a>
+                <a class="collapse-item" href=<?= base_url('/cetakkeluar'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Produk Keluar</a>
             </div>
         </div>
     </li>

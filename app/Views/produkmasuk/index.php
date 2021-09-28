@@ -21,10 +21,10 @@
 
 
                     <?php
-                    $errors = session()->getFlashdata('Failed');
+                    $errors = session()->getFlashdata('gagal');
                     if (!empty($errors)) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong><i class="fas fa-times"></i> Failed</strong> data not added to database.
+                            <strong><i class="fas fa-times"></i> Gagal</strong> data tidak di tambahkan ke database.
                             <ul>
                                 <?php foreach ($errors as $e) { ?>
                                     <li><?= esc($e); ?></li>
@@ -36,9 +36,9 @@
                         </div>
                     <?php endif; ?>
 
-                    <?php if (session()->getFlashData('success')) : ?>
+                    <?php if (session()->getFlashData('sukses')) : ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong><i class="fas fa-check"></i> Sukses</strong> <?= session()->getFlashData('success'); ?>
+                            <strong><i class="fas fa-check"></i> Sukses</strong> <?= session()->getFlashData('sukses'); ?>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -113,16 +113,16 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="stok">Stok</label>
+                        <label for="stokAwal">Stok</label>
                         <input type="text" name="" id="stokAwal" class="form-control" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="jumlah_masuk">Barang Masuk</label>
-                        <input type="number" name="" id="inputMasuk" class="form-control" placeholder="Masukan jumlah barang yang masuk">
+                        <label for="jumlah_masuk">Jumlah Barang Masuk</label>
+                        <input type="number" name="jumlah_masuk" id="jumlah_masuk" class="form-control" placeholder="Masukan jumlah barang yang masuk">
                     </div>
                     <div class="form-group">
                         <label for="total_stok">Total Stok</label>
-                        <input type="number" name="jumlah_masuk" id="jumlah_masuk" class="form-control" required readonly>
+                        <input type="number" name="total_stok" id="total_stok" class="form-control" required readonly>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -135,11 +135,11 @@
     </div>
 
     <script type="text/javascript">
-    $("#inputMasuk").keyup(function(){
+    $("#jumlah_masuk").keyup(function(){
         var a = parseInt($("#stokAwal").val());
-        var b = parseInt($("#inputMasuk").val());
+        var b = parseInt($("#jumlah_masuk").val());
         var c = a+b;
-        $("#jumlah_masuk").val(c);
+        $("#total_stok").val(c);
     });
     </script>
 

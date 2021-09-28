@@ -12,7 +12,27 @@ class ProdukKeluarModel extends Model
     {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('produk_keluar');  
+        $this->builderprod = $this->db->table('produk');  
     }
+
+    // mengambil produk
+    public function get_produk() 
+    {
+        return $this->db->table('produk')->get()->getResultObject();
+    }
+
+    // 
+    // public function get_stok($kode_produk)
+    // {
+    //     // $query = $this->db->query('SELECT kuantitas FROM produk WHERE kode_produk = "PR000001"');
+    //     // return $query->getRow(); //fungsi getRow ialah return single row
+        
+    //     // $query = $this->db->query('SELECT kuantitas FROM produk WHERE kode_produk = kode_produk');
+    //     // return $query->getRow(); //fungsi getRow ialah return single row
+        
+    //     // $this->db->table('produk')->getWhere(['kode_produk' => $kode_produk])->getRow();
+
+    // }
 
     // membuat kode transaksi
     public function get_kode_transaksi(){
@@ -34,7 +54,13 @@ class ProdukKeluarModel extends Model
     public function select_data($id = FALSE)
     {
         if ($id == FALSE) {
-            return $this->builder->get()->getResultObject();
+            // return $this->builder->get()->getResultObject();
+            $query = $this->db->query('SELECT produk_keluar.kode_transaksi, produk_keluar.tanggal, 
+            produk_keluar.kode_produk, produk_keluar.jumlah_keluar, produk.kode_produk, produk.name, 
+            produk.kuantitas, produk.satuan FROM produk_keluar JOIN produk 
+            ON produk_keluar.kode_produk = produk.kode_produk ORDER BY produk_keluar.kode_transaksi ASC');
+
+            return $query->getResultObject();
         }
 
         return $this->builder->getWhere(['id' => $id])->getRow();
@@ -44,13 +70,6 @@ class ProdukKeluarModel extends Model
     public function add_data($data)
     {
         $this->builder->insert($data);
-    }
-
-    // func delete data from db
-    public function delete_data($id)
-    {
-        $this->builder->where('id', $id);
-        $this->builder->delete();
     }
 
     // func update data from db

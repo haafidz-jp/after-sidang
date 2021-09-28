@@ -45,8 +45,12 @@ $routes->get('/', 'Landing::index');
 // $routes->get('/supplier/add_data', 'Supplier::add_data', ['filter' => 'role:admin']);
 // $routes->get('/supplier/update_data', 'Supplier::update_data', ['filter' => 'role:admin']);
 
-$routes->get('/export-pdf', 'Export::export_pdf', ['filter' => 'role:admin']);
-$routes->get('/export-excel', 'Export::export_excel', ['filter' => 'role:admin']);
+// $routes->get('/export-pdf', 'Export::export_pdf', ['filter' => 'role:admin']);
+$routes->get('/cetakproduk', 'CetakProduk::cetaklaporanproduk', ['filter' => 'role:admin']);
+$routes->get('/cetakmasuk', 'CetakProdukMasuk::index', ['filter' => 'role:admin']);
+$routes->get('/cetakkeluar', 'CetakProdukKeluar::index', ['filter' => 'role:admin']);
+
+// $routes->get('/export-excel', 'Export::export_excel', ['filter' => 'role:admin']);
 
 // $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'login','role:admin']);
 

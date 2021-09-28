@@ -30,7 +30,8 @@ class Produk_Masuk extends BaseController
     // mengambil stok berdasarkan pilihan
     public function get_stok()
     {
-        $data = $this->db->table('produk')->select('kuantitas')
+        $data = $this->db->table('produk')
+        ->select('kuantitas')
         ->where('kode_produk', $this->request->getVar('kode_produk'))
         ->get()->getResultObject();
 
@@ -48,7 +49,7 @@ class Produk_Masuk extends BaseController
         ]);
 
         if (!$rules) {
-            session()->setFlashData('failed', \Config\Services::validation()->getErrors());
+            session()->setFlashData('gagal', \Config\Services::validation()->getErrors());
             return redirect()->back();
         }
 
@@ -64,10 +65,10 @@ class Produk_Masuk extends BaseController
         // update stok 
         $this->db->table('produk')
         ->where('kode_produk', $this->request->getVar('kode_produk'))
-            ->set('kuantitas', $this->request->getVar('jumlah_masuk'))
+            ->set('kuantitas', $this->request->getVar('total_stok'))
             ->update();
 
-        session()->setFlashData('Sukses', 'data has been added to database.');
+        session()->setFlashData('sukses', 'data tersimpan pada database.');
         return redirect()->back();
         
     }

@@ -20,6 +20,7 @@ class Produk extends BaseController
             'title' => 'Daftar Produk', // Nama Halaman
             'all_data' => $this->produkModel->select_data(), // Select All Data
             'category' => $this->produkModel->get_category(), // select all category
+            'sub_category' => $this->produkModel->get_subcategory(), // select all sub category
             'get_kobar' => $this->produkModel->get_kobar(), // produksi kode barang
             
         ];
@@ -52,7 +53,7 @@ class Produk extends BaseController
         ]);
 
         if (!$rules) {
-            session()->setFlashData('failed', \Config\Services::validation()->getErrors());
+            session()->setFlashData('gagal', \Config\Services::validation()->getErrors());
             return redirect()->back();
         }
 
@@ -68,14 +69,14 @@ class Produk extends BaseController
         ];
 
         $this->produkModel->add_data($data);
-        session()->setFlashData('success', 'data has been added to database.');
+        session()->setFlashData('sukses', 'data has been added to database.');
         return redirect()->back();
     }
 
     public function delete_data($id)
     {
         $this->produkModel->delete_data($id);
-        session()->setFlashData('success', 'data has been deleted from database.');
+        session()->setFlashData('sukses', 'data has been deleted from database.');
         return redirect()->back();
     }
 
@@ -94,7 +95,7 @@ class Produk extends BaseController
         ]);
 
         if (!$rules) {
-            session()->setFlashData('failed', \Config\Services::validation()->getErrors());
+            session()->setFlashData('gagal', \Config\Services::validation()->getErrors());
             return redirect()->back();
         }
 
@@ -110,7 +111,7 @@ class Produk extends BaseController
         ];
 
         $this->produkModel->update_data($id, $data);
-        session()->setFlashData('success', 'data has been updated from database.');
+        session()->setFlashData('sukses', 'data has been updated from database.');
         return redirect()->back();
     }
 }

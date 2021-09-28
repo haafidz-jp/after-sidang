@@ -20,10 +20,21 @@ class Produk_Keluar extends BaseController
             'title' => 'Halaman Produk Keluar', // Nama Halaman
             'all_data' => $this->produkKeluarModel->select_data(), // selecting all data
             'get_kode_transaksi' => $this->produkKeluarModel->get_kode_transaksi(),
+            'get_produk' => $this->produkKeluarModel->get_produk(),
             
         ];
 
         return view('produkkeluar/index', $data);
+    }
+
+    // mengambil stok berdasarkan pilihan
+    public function get_stok()
+    {
+        $data = $this->db->table('produk')->select('kuantitas')
+        ->where('kode_produk', $this->request->getVar('kode_produk'))
+        ->get()->getResultObject();
+
+        echo json_encode($data);
     }
 
     public function add_data()
@@ -33,12 +44,11 @@ class Produk_Keluar extends BaseController
             'kode_transaksi'=> 'required',
             'tanggal'       => 'required',
             'kode_produk'   => 'required',
-            'name'          => 'required',
             'jumlah_keluar'  => 'required',
         ]);
 
         if (!$rules) {
-            session()->setFlashData('failed', \Config\Services::validation()->getErrors());
+            session()->setFlashData('gagal', \Config\Services::validation()->getErrors());
             return redirect()->back();
         }
 
@@ -46,12 +56,19 @@ class Produk_Keluar extends BaseController
             'kode_transaksi'=> $this->request->getPost('kode_transaksi'),
             'tanggal'       => $this->request->getPost('tanggal'),
             'kode_produk'   => $this->request->getPost('kode_produk'),
-            'name'          => $this->request->getPost('name'),
             'jumlah_keluar' => $this->request->getPost('jumlah_keluar'),
         ];
 
-        $this->produkModel->add_data($data);
-        session()->setFlashData('success', 'data has been added to database.');
+        $this->produkKeluarModel->add_data($data);
+
+        // update stok 
+        $this->db->table('produk')
+        ->where('kode_produk', $this->request->getVar('kode_produk'))
+            ->set('kuantitas', $this->request->getVar('total_stok'))
+            ->update();
+
+        session()->setFlashData('sukses', 'data tersimpan pada database.');
         return redirect()->back();
+        
     }
 }
