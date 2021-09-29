@@ -12,7 +12,7 @@
     <title><?= $title ?> </title>
 
     <!-- Custom fonts for this template-->
-    <link href="<?= base_url('fontawesome-free/css/all.min.css')?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('assets/fontawesome-free/css/all.min.css')?>" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -21,9 +21,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url('css/sb-admin-2.min.css')?>" rel="stylesheet">
+    <link href="<?= base_url('assets/css/sb-admin-2.min.css')?>" rel="stylesheet">
     <!-- Custom styles for this page -->
-    <link href="<?= base_url('datatables/dataTables.bootstrap4.min.css')?>" rel="stylesheet">
+    <link href="<?= base_url('assets/datatables/dataTables.bootstrap4.min.css')?>" rel="stylesheet">
     <!-- Datepicker -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"> -->
     <!-- momentjs -->
@@ -61,7 +61,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= user()->username; ?></span>
                             <img class="img-profile rounded-circle"
-                                src="<?= base_url('img/undraw_profile.svg')?>">
+                                src="<?= base_url('assets/img/undraw_profile.svg')?>">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -149,19 +149,19 @@
 
     <!-- Bootstrap core JavaScript-->
     <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
-    <script src="<?= base_url('jquery/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('assets/jquery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('assets/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url('jquery-easing/jquery.easing.min.js') ?>"></script>
+    <script src="<?= base_url('assets/jquery-easing/jquery.easing.min.js') ?>"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url('js/sb-admin-2.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
 
     <!-- Page level plugins -->
-    <script src="<?= base_url('datatables/jquery.dataTables.min.js')?>"></script>
-    <script src="<?= base_url('datatables/dataTables.bootstrap4.min.js')?>"></script>
-    <script src="<?= base_url('/demo/datatables-demo.js'); ?>"></script>
+    <script src="<?= base_url('assets/datatables/jquery.dataTables.min.js')?>"></script>
+    <script src="<?= base_url('assets/datatables/dataTables.bootstrap4.min.js')?>"></script>
+    <script src="<?= base_url('assets/demo/datatables-demo.js'); ?>"></script>
 
 </body>
 
