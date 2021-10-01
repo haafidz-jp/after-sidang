@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2021 at 08:26 AM
+-- Generation Time: Oct 01, 2021 at 02:02 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -210,7 +210,16 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (93, '::1', 'user@gmail.com', 1, '2021-09-22 22:13:24', 1),
 (94, '::1', 'user@gmail.com', 1, '2021-09-23 00:52:12', 1),
 (95, '::1', 'user@gmail.com', 1, '2021-09-24 21:53:04', 1),
-(96, '::1', 'user@gmail.com', 1, '2021-09-26 00:07:03', 1);
+(96, '::1', 'user@gmail.com', 1, '2021-09-26 00:07:03', 1),
+(97, '::1', 'user@gmail.com', 1, '2021-09-26 01:44:24', 1),
+(98, '::1', 'user@gmail.com', 1, '2021-09-26 06:39:21', 1),
+(99, '::1', 'user@gmail.com', 1, '2021-09-26 22:03:52', 1),
+(100, '::1', 'user@gmail.com', 1, '2021-09-26 22:06:05', 1),
+(101, '::1', 'user@gmail.com', 1, '2021-09-26 22:07:56', 1),
+(102, '::1', 'user@gmail.com', 1, '2021-09-28 07:33:44', 1),
+(103, '::1', 'user@gmail.com', 1, '2021-09-28 10:34:15', 1),
+(104, '::1', 'user@gmail.com', 1, '2021-09-29 04:37:54', 1),
+(105, '::1', 'user@gmail.com', 1, '2021-10-01 00:49:30', 1);
 
 -- --------------------------------------------------------
 
@@ -345,10 +354,11 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `kode_produk`, `name`, `category`, `sub_category`, `merk`, `kuantitas`, `satuan`, `sku`, `created_at`, `update_at`) VALUES
-(1, 'PR000001', 'Faber Castell 2B', 1, 'ATPEN2B', 'Faber Castell', 11, 'PAK', '4005401990079', '2021-05-07 14:58:24', '2021-09-26 12:37:58'),
+(1, 'PR000001', 'Faber Castell 2B', 1, 'ATPEN2B', 'Faber Castell', 8, 'PAK', '4005401990079', '2021-05-07 14:58:24', '2021-09-28 23:48:12'),
 (2, 'PR000002', 'Buku Gambar A3 SINTARO', 2, 'BGA3', 'SINTARO', 2, 'PAK', '8993988286066', '2021-09-14 15:58:34', '2021-09-19 14:19:30'),
 (39, 'PR000003', 'TIARA CAMPUS 38 LBR', 3, 'BT38', 'TIARA', 3, 'PAK', '123', '2021-09-17 16:19:20', '2021-09-19 14:19:33'),
-(40, 'PR000004', 'Standard AE7', 1, 'ATPUL05', 'STANDARD', 4, 'PAK', '1234567891011', '2021-09-17 19:56:02', '2021-09-19 14:19:35');
+(40, 'PR000004', 'Standard AE7', 1, 'ATPUL05', 'STANDARD', 4, 'PAK', '1234567891011', '2021-09-17 19:56:02', '2021-09-19 14:19:35'),
+(41, 'PR000005', 'jangka 24', 6, 'LLJ', 'Joyko', 0, 'PCS', '12345566', '2021-09-28 23:47:11', '2021-09-28 23:47:11');
 
 -- --------------------------------------------------------
 
@@ -364,6 +374,15 @@ CREATE TABLE `produk_keluar` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `update_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `produk_keluar`
+--
+
+INSERT INTO `produk_keluar` (`kode_transaksi`, `tanggal`, `kode_produk`, `jumlah_keluar`, `created_at`, `update_at`) VALUES
+('PK000001', '2021-09-28', 'PR000001', 1, '2021-09-28 19:57:13', '2021-09-28 19:57:13'),
+('PK000002', '2021-09-28', 'PR000001', 10, '2021-09-28 23:47:29', '2021-09-28 23:47:29'),
+('PK000003', '2021-09-28', 'PR000001', 2, '2021-09-28 23:48:12', '2021-09-28 23:48:12');
 
 -- --------------------------------------------------------
 
@@ -388,7 +407,9 @@ INSERT INTO `produk_masuk` (`kode_transaksi`, `tanggal`, `kode_produk`, `jumlah_
 ('PM000001', '2021-09-17', 'PR000001', 5, '2021-09-17 23:18:43', '2021-09-17 23:18:43'),
 ('PM000002', '2021-09-23', 'PR000001', 7, '2021-09-23 13:12:35', '2021-09-23 13:12:35'),
 ('PM000003', '2021-09-26', 'PR000001', 10, '2021-09-26 12:07:45', '2021-09-26 12:07:45'),
-('PM000004', '2021-09-26', 'PR000001', 1, '2021-09-26 12:37:58', '2021-09-26 12:37:58');
+('PM000004', '2021-09-26', 'PR000001', 1, '2021-09-26 12:37:58', '2021-09-26 12:37:58'),
+('PM000005', '2021-09-28', 'PR000001', 5, '2021-09-28 23:21:04', '2021-09-28 23:21:04'),
+('PM000006', '2021-09-28', 'PR000001', 5, '2021-09-28 23:33:07', '2021-09-28 23:33:07');
 
 -- --------------------------------------------------------
 
@@ -467,6 +488,7 @@ CREATE TABLE `supplier` (
   `phone` varchar(15) NOT NULL,
   `email` varchar(30) NOT NULL,
   `address` text NOT NULL,
+  `menyediakan` varchar(20) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -475,13 +497,14 @@ CREATE TABLE `supplier` (
 -- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`id`, `namevendor`, `namesales`, `phone`, `email`, `address`, `created_at`, `updated_at`) VALUES
-(8, 'PT FABERCASTELL', 'Johnny D Boy', '081288253426', 's@s.com', 'Jl Arjuna Utr 8 A RT 004/001, Dki Jakarta', '2021-01-02 23:27:16', '2021-07-02 03:19:27'),
-(9, 'PT FUJIFILM', 'AA PATAN', '02188121212', 'admin@fujifilm.com', ' Jl KH Hasyim Ashari 125 Kompl Niaga Roxy Mas Bl B 1/23-24, Dki Jakarta', '2021-01-02 23:43:37', '2021-07-02 04:08:33'),
-(12, 'PT MITSUBUSHI', 'ANTONY JAYA', '021123123123', 'antoni@toni.com', 'Kompl Permata Hijau Bl D/1 RT 004/12,Grogol Utara', '2021-07-02 03:24:38', '2021-07-02 03:29:54'),
-(13, 'PT DEWAWEB', 'FELIX', '02198231415', 'cs@dewaweb.com', 'Jl H Nawi Raya 9-A, Dki Jakarta', '2021-07-02 03:27:51', '2021-07-02 03:29:43'),
-(14, 'PT SUSU BERSAMA', 'IBRAHIM', '021121222', 'admin@susubersama.com', 'Jl Hayam wuruk 102 F, Dki Jakarta', '2021-07-02 03:29:26', '2021-07-02 03:29:26'),
-(15, 'CV POPE SALOM', 'YEHEZKIEL', '081187664774', 'yehezkiel@pope.com', 'Jl Jend Sudirman Kav 60 Menara Sudirman, Dki Jakarta', '2021-07-02 03:31:12', '2021-07-02 03:31:12');
+INSERT INTO `supplier` (`id`, `namevendor`, `namesales`, `phone`, `email`, `address`, `menyediakan`, `created_at`, `updated_at`) VALUES
+(8, 'PT FABERCASTELL', 'Johnny D Boy', '081288253426', 's@s.com', 'Jl Arjuna Utr 8 A RT 004/001, Dki Jakarta', 'Alat Tulis', '2021-01-02 23:27:16', '2021-10-01 02:38:06'),
+(9, 'PT FUJIFILM', 'AA PATAN', '02188121212', 'admin@fujifilm.com', ' Jl KH Hasyim Ashari 125 Kompl Niaga Roxy Mas Bl B 1/23-24, Dki Jakarta', '', '2021-01-02 23:43:37', '2021-07-02 04:08:33'),
+(12, 'PT MITSUBUSHI', 'ANTONY JAYA', '021123123123', 'antoni@toni.com', 'Kompl Permata Hijau Bl D/1 RT 004/12,Grogol Utara', '', '2021-07-02 03:24:38', '2021-07-02 03:29:54'),
+(13, 'PT DEWAWEB', 'FELIX', '02198231415', 'cs@dewaweb.com', 'Jl H Nawi Raya 9-A, Dki Jakarta', '', '2021-07-02 03:27:51', '2021-07-02 03:29:43'),
+(14, 'PT SUSU BERSAMA', 'IBRAHIM', '021121222', 'admin@susubersama.com', 'Jl Hayam wuruk 102 F, Dki Jakarta', '', '2021-07-02 03:29:26', '2021-07-02 03:29:26'),
+(15, 'CV POPE SALOM', 'YEHEZKIEL', '081187664774', 'yehezkiel@pope.com', 'Jl Jend Sudirman Kav 60 Menara Sudirman, Dki Jakarta', '', '2021-07-02 03:31:12', '2021-07-02 03:31:12'),
+(21, 'tes', 'tes', '021882371', 'asd@asdasdasd.com', 'asdhuyb 789y8', 'Alat Tulis', '2021-10-01 01:52:53', '2021-10-01 02:37:24');
 
 -- --------------------------------------------------------
 
@@ -655,7 +678,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -685,13 +708,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users`
