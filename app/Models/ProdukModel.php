@@ -25,22 +25,6 @@ class ProdukModel extends Model
     {
         return $this->db->table('sub_category')->get()->getResultObject();
     }
-    // ambil sub-kategori
-    // public function get_sub_category($category_id){
-		
-    //     // return $this->db->getWhere('sub_category', array('subcategory_category_id' => $category_id))->getRow();
-    //     // return $this->builder->getWhere(['subcategory_category_id' => $category_id])->getResultObject();
-    //     // return $this->db->table('sub_category')->getWhere(array('subcategory_category_id' => $category_id))->getResultObject();
-
-	// }
-
-    // ambil kode produk
-    // public function get_kode_produk()
-    // {
-    //     return $this->db->table('produk')
-    //     ->selectMax('kode_produk', 'max_code')
-    //     ->get();
-    // }
 
     // ambil kode barang
     public function get_kobar(){
@@ -62,13 +46,20 @@ class ProdukModel extends Model
     public function select_data($id = FALSE)
     {
         if ($id == FALSE) {
-            // return $this->builder->get()->getResultObject();
-            $query = $this->db->query('SELECT produk.id, produk.kode_produk, produk.name, produk.category, 
-            produk.sub_category, produk.merk, produk.kuantitas, produk.satuan, produk.sku , category.category_name, 
-            sub_category.subcategory_name FROM produk JOIN category ON produk.category = category.category_id JOIN sub_category 
-            ON produk.sub_category = sub_category.subcategory_id ORDER BY produk.kode_produk ASC');
+            // default // return $this->builder->get()->getResultObject();
 
-            return $query->getResultObject();
+            // $query = $this->db->query('SELECT produk.id, produk.kode_produk, produk.name, produk.category, 
+            // produk.sub_category, produk.merk, produk.kuantitas, produk.satuan, produk.sku , category.category_name, 
+            // sub_category.subcategory_name FROM produk JOIN category ON produk.category = category.category_id JOIN sub_category 
+            // ON produk.sub_category = sub_category.subcategory_id ORDER BY produk.kode_produk ASC');
+            // return $query->getResultObject();
+
+            return $this->db->table('produk')
+            ->select('produk.id,produk.kode_produk,produk.name,produk.category,produk.sub_category,produk.merk,produk.kuantitas,produk.satuan,produk.sku,category.category_name,sub_category.subcategory_name')
+            ->join('category', 'produk.category = category.category_id')
+            ->join('sub_category', 'produk.sub_category = sub_category.subcategory_id')
+            ->orderBy('produk.kode_produk ASC')
+            ->get()->getResultObject();
         }
 
         return $this->builder->getWhere(['id' => $id])->getRow();

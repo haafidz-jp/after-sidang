@@ -5,7 +5,7 @@
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto" style="opacity: 0;">
         <div class="inner">
-        <h3 class="masthead-brand">Cover</h3>
+            <br> <br>
         </div>
     </header>
 
@@ -73,9 +73,14 @@
                                     </a>
                                     <div class="collapse" id="collapseExample">
                                         <div class="card card-body">
-                                            Username : starter12345 <br>
-                                            Email : user@gmail.com <br>
-                                            Password : starter12345
+                                            <h5>Akun Admin</h5>
+                                            Username : admin <br>
+                                            Email : admin@haafidz.xyz <br>
+                                            Password : starter12345 <br> <br>
+                                            <h5>Akun Karyawan</h5>
+                                            Username : karyawan <br>
+                                            Email : karyawan@haafidz.xyz <br>
+                                            Password : starter12345 <br>
                                         </div>
                                     </div>
                                     <!-- Footer -->

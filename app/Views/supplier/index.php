@@ -12,13 +12,13 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-user mr-1"></i>
-                    Table Supplier 
+                    Tabel Supplier 
                 </div>
                 <div class="card-body">
                     <a href="<?= base_url('supplier/add_data'); ?>" class="btn btn-primary btn-sm mb-2"><i class="fas fa-plus-square"></i> Tambah Data</a>
 
                     <?php
-                    $errors = session()->getFlashdata('failed');
+                    $errors = session()->getFlashdata('gagal');
                     if (!empty($errors)) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong><i class="fas fa-times"></i> Gagal</strong> data tidak ditambahkan ke dalam database.
@@ -33,9 +33,9 @@
                         </div>
                     <?php endif; ?>
 
-                    <?php if (session()->getFlashData('success')) : ?>
+                    <?php if (session()->getFlashData('sukses')) : ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong><i class="fas fa-check"></i> Sukses</strong> <?= session()->getFlashData('success'); ?>
+                            <strong><i class="fas fa-check"></i> Sukses</strong> <?= session()->getFlashData('sukses'); ?>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -65,7 +65,7 @@
                                         <td><?= esc($datas['phone']); ?></td>
                                         <td><?= esc($datas['email']); ?></td>
                                         <td><?= esc($datas['address']); ?></td>
-                                        <td><?= esc($datas['namesales']); ?></td>
+                                        <td><?= esc($datas['menyediakan']); ?></td>
                                         <td class="text-center" width="20%">
                                             <a href="<?= base_url('supplier/update_data/'.$datas['id']); ?>" class="btn btn-success btn-sm mb-1">
                                                 Update

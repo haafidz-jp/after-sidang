@@ -34,25 +34,29 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Landing::index');
 
-// $routes->group('', ['filter' => 'login','admin'], function($routes){
-//     $routes->get('/dashboard', 'Dashboard::index');
-//     $routes->get('/produk/*', 'Produk::index');
-//     $routes->get('/supplier/*', 'Supplier::index');
+// $routes->group('admin', ['filter' => 'role:admin,superadmin'], function($routes) {
+//     ...
 // });
 
-// $routes->get('/produk', 'Produk::index', ['filter' => 'role:admin']);
-// $routes->get('/supplier', 'Supplier::index', ['filter' => 'role:admin']);
-// $routes->get('/supplier/add_data', 'Supplier::add_data', ['filter' => 'role:admin']);
-// $routes->get('/supplier/update_data', 'Supplier::update_data', ['filter' => 'role:admin']);
+$routes->get('/dashboard', 			'dashboard::index', 				['filter' => 'role:admin,karyawan']);
+$routes->get('/dashboard/index', 	'dashboard::index', 				['filter' => 'role:admin,karyawan']);
 
-// $routes->get('/export-pdf', 'Export::export_pdf', ['filter' => 'role:admin']);
-$routes->get('/cetakproduk', 'CetakProduk::cetaklaporanproduk', ['filter' => 'role:admin']);
-$routes->get('/cetakmasuk', 'CetakProdukMasuk::index', ['filter' => 'role:admin']);
-$routes->get('/cetakkeluar', 'CetakProdukKeluar::index', ['filter' => 'role:admin']);
+$routes->get('/produk', 			'produk::index', 					['filter' => 'role:admin,karyawan']);
+$routes->get('/produk/index', 		'produk::index', 					['filter' => 'role:admin,karyawan']);
 
-// $routes->get('/export-excel', 'Export::export_excel', ['filter' => 'role:admin']);
+$routes->get('/produk_masuk', 		'Produk_Masuk::index', 				['filter' => 'role:admin,karyawan']);
+$routes->get('/produk_masuk/index', 'Produk_Masuk::index', 				['filter' => 'role:admin,karyawan']);
 
-// $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'login','role:admin']);
+$routes->get('/produk_keluar', 		'Produk_Keluar::index', 			['filter' => 'role:admin']);
+$routes->get('/produk_keluar/index','Produk_Keluar::index', 			['filter' => 'role:admin']);
+
+$routes->get('/cetakproduk', 		'CetakProduk::cetaklaporanproduk', 	['filter' => 'role:admin,karyawan']);
+$routes->get('/cetakproduk/index', 	'CetakProduk::cetaklaporanproduk', 	['filter' => 'role:admin,karyawan']);
+$routes->get('/cetakmasuk', 		'CetakProdukMasuk::index', 			['filter' => 'role:admin,karyawan']);
+$routes->get('/cetakmasuk/index', 	'CetakProdukMasuk::index', 			['filter' => 'role:admin,karyawan']);
+$routes->get('/cetakkeluar', 		'CetakProdukKeluar::index', 		['filter' => 'role:admin']);
+$routes->get('/cetakkeluar/index', 	'CetakProdukKeluar::index', 		['filter' => 'role:admin']);
+
 
 /*
  * --------------------------------------------------------------------

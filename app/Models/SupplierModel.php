@@ -9,8 +9,13 @@ class SupplierModel extends Model
     protected $table         = 'supplier';
     protected $primaryKey    = 'id';
     protected $returnType    = 'array';
-    protected $allowedFields = ['namevendor', 'namesales', 'phone', 'email', 'address'];
+    protected $allowedFields = ['namevendor', 'namesales', 'phone', 'email', 'address','menyediakan'];
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
+
+    public function get_category() 
+    {
+        return $this->db->table('category')->get()->getResultArray();
+    }
 }

@@ -8,7 +8,7 @@
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="<?= base_url('dashboard'); ?>">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?= base_url('supplier'); ?>">Supplier</a></li>
-                <li class="breadcrumb-item active">Update data</li>
+                <li class="breadcrumb-item active">Update data Supplier</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-header">
@@ -17,10 +17,10 @@
                 </div>
                 <div class="card-body">
                     <?php
-                    $errors = session()->getFlashdata('failed');
+                    $errors = session()->getFlashdata('gagal');
                     if (!empty($errors)) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong><i class="fas fa-times"></i> Failed</strong> data not added to database.
+                            <strong><i class="fas fa-times"></i> Gagal</strong> data not added to database.
                             <ul>
                                 <?php foreach ($errors as $e) { ?>
                                     <li><?= esc($e); ?></li>
@@ -35,7 +35,7 @@
                     <?php
                     if (isset($validation)) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong><i class="fas fa-times"></i> Failed</strong> data not added to database.
+                            <strong><i class="fas fa-times"></i> Gagal</strong> data not added to database.
                             <ul>
                                 <?= $validation->listErrors() ?>
                             </ul>
@@ -67,6 +67,20 @@
                     <div class="form-group">
                         <label for="address">Address</label>
                         <textarea name="address" id="address" cols="30" rows="10" class="form-control"><?= old('address', $dataById['address']); ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="menyediakan">Menyediakan</label> <br>
+                        <select name="menyediakan" id="menyediakan" class="form-control">
+                            <option value="">- Pilih Kategori -</option>
+                            <?php foreach($category as $row):?>
+                            <?php if($row['category_name'] == old('menyediakan', $dataById['menyediakan'])):?>
+                            <option value="<?php echo $row['category_name'];?>" selected>
+                                <?php else: ?>
+                                    <option value="<?php echo $row['category_name'];?>">
+                                <?php endif;?>
+                            <?php echo $row['category_name'];?></option>
+                            <?php endforeach;?>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm float-right">Submit</button>
                     <a href="<?= base_url('supplier'); ?>" class="btn btn-secondary btn-sm float-right mr-1">Back</a>

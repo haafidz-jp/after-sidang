@@ -12,7 +12,6 @@ class CetakProdukKeluar extends BaseController
     {
         $this->db = \Config\Database::connect();
         helper('form');
-        // $this->builder = $this->db->table('produk');
     }
 
     public function index()

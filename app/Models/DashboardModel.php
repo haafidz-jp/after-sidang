@@ -13,30 +13,59 @@ class DashboardModel extends Model
         $this->builder = $this->db->table('produk');  
     }
 
-    // fungsi SELECT * FROM produk WHERE quantity < 10;
-    public function produk_kurang_card()
+
+    //  CARD
+    // fungsi SELECT * FROM produk WHERE quantity < 10; 
+    public function produk_kurang_card_pak()
     {
-        return $this->db->query('SELECT * FROM produk WHERE kuantitas < 10') ->getNumRows();
+        // return $this->db->query('SELECT * FROM produk WHERE kuantitas < 10 AND satuan = "PAK" ') ->getNumRows();
+        return $this->builder->getWhere(['kuantitas <' => 10,'satuan' => 'PAK']) ->getNumRows();
     }
-
-    // fungsi SELECT * FROM produk WHERE quantity < 10;
-    public function produk_kurang()
+    
+    // fungsi SELECT * FROM produk WHERE quantity < 10; 
+    public function produk_kurang_card_pcs()
     {
-        return $this->builder->getWhere(['kuantitas <' => 10])->getResultObject();
-    }
-
-    // fungsi SELECT * FROM produk WHERE quantity > 50;
-    public function produk_lebih_card()
-    {
-        return $this->db->query('SELECT * FROM produk WHERE kuantitas > 50') ->getNumRows();
-
+        // return $this->db->query('SELECT * FROM produk WHERE kuantitas < 10 AND satuan = "PCS" ') ->getNumRows();
+        return $this->builder->getWhere(['kuantitas <' => 10,'satuan' => 'PCS']) ->getNumRows();
     }
 
     // fungsi SELECT * FROM produk WHERE quantity > 50;
-    public function produk_lebih()
+    public function produk_lebih_card_pak()
     {
-        return $this->builder->getWhere(['kuantitas >' => 50])->getResultObject();
+        return $this->builder->getWhere(['kuantitas >' => 50,'satuan' => 'PAK']) ->getNumRows();
+    }
+    
+    // fungsi SELECT * FROM produk WHERE quantity > 50;
+    public function produk_lebih_card_pcs()
+    {
+        return $this->builder->getWhere(['kuantitas >' => 50,'satuan' => 'PCS']) ->getNumRows();
+    }
 
+
+    // TABEL KURANG
+    // fungsi SELECT * FROM produk WHERE quantity < 10;
+    public function produk_kurang_pak()
+    {
+        return $this->builder->getWhere(['kuantitas <' => 10,'satuan' => 'PAK'])->getResultObject();
+    }
+
+    // fungsi SELECT * FROM produk WHERE quantity < 10;
+    public function produk_kurang_pcs()
+    {
+        return $this->builder->getWhere(['kuantitas <' => 10,'satuan' => 'PCS'])->getResultObject();
+    }
+
+    // TABEL LEBIH
+    // fungsi SELECT * FROM produk WHERE quantity > 50;
+    public function produk_lebih_pak()
+    {
+        return $this->builder->getWhere(['kuantitas >' => 20,'satuan' => 'PAK'])->getResultObject();
+    }
+    
+    // fungsi SELECT * FROM produk WHERE quantity > 50;
+    public function produk_lebih_pcs()
+    {
+        return $this->builder->getWhere(['kuantitas >' => 20,'satuan' => 'PCS'])->getResultObject();
     }
 
     // return INT

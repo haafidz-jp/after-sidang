@@ -18,7 +18,7 @@ class Supplier extends BaseController
     {
         $data = [
             'title' => 'Supplier',
-            'all_data' => $this->supplierModel->findAll()
+            'all_data' => $this->supplierModel->findAll(),
         ];
 
         return view('supplier/index', $data);
@@ -26,7 +26,12 @@ class Supplier extends BaseController
 
     public function add_data()
     {
-        $data['title'] = 'Add Data';
+        // $data['title'] = 'Add Data';
+        $data = [
+            'title' => 'Tambah Data Supplier',
+            'category' => $this->supplierModel->get_category(), // select all category
+        ];
+
         if ($this->request->getPost()) {
             $rules = [
                 'namevendor' => 'required|alpha_space',
@@ -34,6 +39,7 @@ class Supplier extends BaseController
                 'phone' => 'required|numeric',
                 'email' => 'required|valid_email',
                 'address' => 'required|string',
+                'menyediakan' => 'required|alpha_space',
             ];
 
             if ($this->validate($rules)) {
@@ -42,14 +48,15 @@ class Supplier extends BaseController
                     'namesales' => $this->request->getPost('namesales'),
                     'phone' => $this->request->getPost('phone'),
                     'email' => $this->request->getPost('email'),
-                    'address' => $this->request->getPost('address')
+                    'address' => $this->request->getPost('address'),
+                    'menyediakan' => $this->request->getPost('menyediakan'),
                 ];
 
                 $this->supplierModel->insert($inserted);
-                session()->setFlashData('success', 'data has been added to database');
+                session()->setFlashData('sukses', 'data has been added to database');
                 return redirect()->to('/supplier');
             } else {
-                session()->setFlashData('failed', \Config\Services::validation()->getErrors());
+                session()->setFlashData('gagal', \Config\Services::validation()->getErrors());
                 return redirect()->back()->withInput();
             }
         }
@@ -60,7 +67,7 @@ class Supplier extends BaseController
     {
 
         $this->supplierModel->delete($id);
-        session()->setFlashData('Success', 'data has been deleted from database.');
+        session()->setFlashData('sukses', 'data has been deleted from database.');
         return redirect()->to('/supplier');
     }
 
@@ -68,7 +75,8 @@ class Supplier extends BaseController
     {
         $data = [
             'title' => 'Update Data',
-            'dataById' => $this->supplierModel->where('id', $id)->first()
+            'dataById' => $this->supplierModel->where('id', $id)->first(),
+            'category' => $this->supplierModel->get_category(), // select all category
         ];
 
         if ($this->request->getPost()) {
@@ -77,7 +85,8 @@ class Supplier extends BaseController
                 'namesales' => 'required|alpha_space',
                 'phone' => 'required|numeric',
                 'email' => 'required|valid_email',
-                'address' => 'required|string'
+                'address' => 'required|string',
+                'menyediakan' => 'required|alpha_space',
             ];
 
             if ($this->validate($rules)) {
@@ -87,14 +96,15 @@ class Supplier extends BaseController
                     'namesales' => $this->request->getPost('namesales'),
                     'phone' => $this->request->getPost('phone'),
                     'email' => $this->request->getPost('email'),
-                    'address' => $this->request->getPost('address')
+                    'address' => $this->request->getPost('address'),
+                    'menyediakan' => $this->request->getPost('menyediakan'),
                 ];
 
                 $this->supplierModel->update($id, $inserted);
-                session()->setFlashData('success', 'data has been updated from database');
+                session()->setFlashData('sukses', 'data has been updated from database');
                 return redirect()->to('/supplier');
             } else {
-                session()->setFlashData('failed', \Config\Services::validation()->getErrors());
+                session()->setFlashData('gagal', \Config\Services::validation()->getErrors());
                 return redirect()->back()->withInput();
             }
         }

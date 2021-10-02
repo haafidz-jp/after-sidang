@@ -21,19 +21,6 @@ class ProdukMasukModel extends Model
         return $this->db->table('produk')->get()->getResultObject();
     }
 
-    // 
-    // public function get_stok($kode_produk)
-    // {
-    //     // $query = $this->db->query('SELECT kuantitas FROM produk WHERE kode_produk = "PR000001"');
-    //     // return $query->getRow(); //fungsi getRow ialah return single row
-        
-    //     // $query = $this->db->query('SELECT kuantitas FROM produk WHERE kode_produk = kode_produk');
-    //     // return $query->getRow(); //fungsi getRow ialah return single row
-        
-    //     // $this->db->table('produk')->getWhere(['kode_produk' => $kode_produk])->getRow();
-
-    // }
-
     // membuat kode transaksi
     public function get_kode_transaksi(){
         
@@ -54,13 +41,19 @@ class ProdukMasukModel extends Model
     public function select_data($id = FALSE)
     {
         if ($id == FALSE) {
-            // return $this->builder->get()->getResultObject();
-            $query = $this->db->query('SELECT produk_masuk.kode_transaksi, produk_masuk.tanggal, 
-            produk_masuk.kode_produk, produk_masuk.jumlah_masuk, produk.kode_produk, produk.name, 
-            produk.kuantitas, produk.satuan FROM produk_masuk JOIN produk 
-            ON produk_masuk.kode_produk = produk.kode_produk ORDER BY produk_masuk.kode_transaksi ASC');
+            // default // return $this->builder->get()->getResultObject();
 
-            return $query->getResultObject();
+            // $query = $this->db->query('SELECT produk_masuk.kode_transaksi, produk_masuk.tanggal, 
+            // produk_masuk.kode_produk, produk_masuk.jumlah_masuk, produk.kode_produk, produk.name, 
+            // produk.kuantitas, produk.satuan FROM produk_masuk JOIN produk 
+            // ON produk_masuk.kode_produk = produk.kode_produk ORDER BY produk_masuk.kode_transaksi ASC');
+            // return $query->getResultObject();
+
+            $this->db->table('produk_masuk')
+            ->select('produk_masuk.kode_transaksi,produk_masuk.tanggal,produk_masuk.kode_produk,produk_masuk.jumlah_masuk,produk.kode_produk,produk.name,produk.kuantitas,produk.satuan')
+            ->join('produk', 'produk_masuk.kode_produk = produk.kode_produk')
+            ->orderBy('produk_masuk.kode_transaksi ASC')
+            ->get()->getResultObject();
         }
 
         return $this->builder->getWhere(['id' => $id])->getRow();

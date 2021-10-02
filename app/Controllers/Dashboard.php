@@ -21,10 +21,14 @@ class Dashboard extends BaseController
             'title' => 'Dashboard',
             'total_produk_card' => $this->dashboard->total_produk_card(),
             'total_supplier_card' => $this->dashboard->total_supplier_card(),
-            'produk_kurang_card' => $this->dashboard->produk_kurang_card(),
-            'produk_kurang' => $this->dashboard->produk_kurang(),
-            'produk_lebih_card' => $this->dashboard->produk_lebih_card(),
-            'produk_lebih' => $this->dashboard->produk_lebih(),
+            'produk_kurang_card_pak' => $this->dashboard->produk_kurang_card_pak(),
+            'produk_kurang_card_pcs' => $this->dashboard->produk_kurang_card_pcs(),
+            'produk_kurang_pak' => $this->dashboard->produk_kurang_pak(),
+            'produk_kurang_pcs' => $this->dashboard->produk_kurang_pcs(),
+            'produk_lebih_card_pak' => $this->dashboard->produk_lebih_card_pak(),
+            'produk_lebih_card_pcs' => $this->dashboard->produk_lebih_card_pcs(),
+            'produk_lebih_pak' => $this->dashboard->produk_lebih_pak(),
+            'produk_lebih_pcs' => $this->dashboard->produk_lebih_pcs(),
             
         ];
 

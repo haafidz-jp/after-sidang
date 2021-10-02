@@ -12,14 +12,6 @@ class CetakProdukMasuk extends BaseController
     {
         $this->db = \Config\Database::connect();
         helper('form'); 
-        // $this->builder = $this->db->table('produk');
-        // $this->builder = $this->db->table('produk')
-        // ->select('produk_masuk.kode_transaksi,produk_masuk.tanggal,produk_masuk.kode_produk,produk.name,produk_masuk.jumlah_masuk,produk.satuan')
-        // ->join('produk_masuk', 'produk.kode_produk = produk_masuk.kode_produk')
-        // ->where('produk_masuk.tanggal >=', $this->request->getVar('tanggal_awal'))
-        // ->where('produk_masuk.tanggal <=', $this->request->getVar('tanggal_akhir'))
-        // ->orderBy('produk_masuk.kode_transaksi ASC');
-        // ->get()->getResultObject();
     }
 
     public function index()

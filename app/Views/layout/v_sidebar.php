@@ -50,12 +50,14 @@
         <span>Produk Masuk</span></a>
     </li>
 
+    <?php if(in_groups('admin')) :?>
     <!-- Nav Item - Produk Keluar -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('/produk_keluar')?>">
         <i class="fas fa-fw fa-box"></i>
         <span>Produk Keluar</span></a>
     </li>
+    <?php endif; ?>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -87,7 +89,9 @@
                 <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
                 <a class="collapse-item" href=<?= base_url('/cetakproduk'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Daftar Produk</a>
                 <a class="collapse-item" href=<?= base_url('/cetakmasuk'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Produk Masuk</a>
+                <?php if(in_groups('admin')) :?>
                 <a class="collapse-item" href=<?= base_url('/cetakkeluar'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Produk Keluar</a>
+                <?php endif; ?>
             </div>
         </div>
     </li>

@@ -9,7 +9,16 @@ $(document).ready(function() {
 
 // custom js demo 
 $(document).ready(function() {
-  $('#dataTableKurang').DataTable( {
+  $('#dataTableKurangPak').DataTable( {
+      "scrollY":        "200px",
+      "scrollCollapse": true,
+      "paging":         false,
+      "searching": false
+  } );
+} );
+
+$(document).ready(function() {
+  $('#dataTableKurangPcs').DataTable( {
       "scrollY":        "200px",
       "scrollCollapse": true,
       "paging":         false,
@@ -19,7 +28,16 @@ $(document).ready(function() {
 
 // 
 $(document).ready(function() {
-  $('#dataTableLebih').DataTable( {
+  $('#dataTableLebihPak').DataTable( {
+      "scrollY":        "200px",
+      "scrollCollapse": true,
+      "paging":         true,
+      "searching": false
+  } );
+} );
+
+$(document).ready(function() {
+  $('#dataTableLebihPcs').DataTable( {
       "scrollY":        "200px",
       "scrollCollapse": true,
       "paging":         true,

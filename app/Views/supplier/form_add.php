@@ -13,11 +13,11 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table mr-1"></i>
-                    Form Tambah Data
+                    Form Tambah Data Supplier
                 </div>
                 <div class="card-body">
                     <?php
-                    $errors = session()->getFlashdata('failed');
+                    $errors = session()->getFlashdata('gagal');
                     if (!empty($errors)) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong><i class="fas fa-times"></i> Gagal</strong> data tidak ditambahkan ke dalam database.
@@ -64,23 +64,19 @@
                         <input type="text" name="email" id="email" class="form-control" value="<?= old('email'); ?>">
                     </div>
                     <div class="form-group">
-                        <label for="address">Address</label>
+                        <label for="address">Alamat</label>
                         <textarea name="address" id="address" cols="30" rows="10" class="form-control"><?= old('address'); ?></textarea>
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label for="menyediakan">Menyediakan</label>
-                        <div class="col-sm-5">
-                            <select class="mul-select" multiple="true">
-                                <option value="Cambodia">Cambodia</option>
-                                <option value="Khmer">Khmer</option>
-                                <option value="Thiland">Thiland</option>
-                                <option value="Koren">Koren</option>
-                                <option value="China">China</option>
-                                <option value="English">English</option>
-                                <option value="USA">USA</option>
-                            </select>
-                        </div>
-                    </div> -->
+                        <select name="menyediakan" id="menyediakan" class="form-control" required>
+                            <option value="">No Selected</option>
+                            <?php foreach($category as $row):?>
+                            <option value="<?php echo $row['category_name'];?>">
+                            <?php echo $row['category_name'];?></option>
+                            <?php endforeach;?>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary btn-sm float-right">Submit</button>
                     <a href="<?= base_url('supplier'); ?>" class="btn btn-secondary btn-sm float-right mr-1">Back</a>
                     <?= form_close(); ?>

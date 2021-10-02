@@ -89,7 +89,6 @@ class Produk extends BaseController
             'upcategory'    => 'required',
             'upsub_category'=> 'required',
             'merk'          => 'required',
-            // 'kuantitas'     => 'required',
             'satuan'        => 'required',
             'sku'           => 'required',
         ]);
@@ -105,7 +104,6 @@ class Produk extends BaseController
             'category'      => $this->request->getPost('upcategory'),
             'sub_category'  => $this->request->getPost('upsub_category'),
             'merk'          => $this->request->getPost('merk'),
-            // 'kuantitas'     => $this->request->getPost('kuantitas'),
             'satuan'        => $this->request->getPost('satuan'),
             'sku'           => $this->request->getPost('sku'),
         ];
