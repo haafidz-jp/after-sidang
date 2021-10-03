@@ -49,7 +49,7 @@ class ProdukMasukModel extends Model
             // ON produk_masuk.kode_produk = produk.kode_produk ORDER BY produk_masuk.kode_transaksi ASC');
             // return $query->getResultObject();
 
-            $this->db->table('produk_masuk')
+            return $this->db->table('produk_masuk')
             ->select('produk_masuk.kode_transaksi,produk_masuk.tanggal,produk_masuk.kode_produk,produk_masuk.jumlah_masuk,produk.kode_produk,produk.name,produk.kuantitas,produk.satuan')
             ->join('produk', 'produk_masuk.kode_produk = produk.kode_produk')
             ->orderBy('produk_masuk.kode_transaksi ASC')
