@@ -112,6 +112,9 @@
                         <input type="text" name="name" id="name" class="form-control" placeholder="Masukan Nama Produk" required>
                     </div>
                     <div class="form-group">
+                        <input type="hidden" name="user_created" value=" <?php echo user_id(); ?>" id="user_created" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
                         <label for="category">Kategori</label>
                         <select name="category" id="category" class="form-control" required>
                             <option value="">No Selected</option>
@@ -125,6 +128,16 @@
                         <label for="category">Sub Kategory</label>
                         <select name="sub_category" id="sub_category" class="form-control" >
                             <option value="">- Pilih Sub Kategori -</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="supplier">Supplier</label>
+                        <select name="supplier" id="supplier" class="form-control" required>
+                            <option value="">No Selected</option>
+                            <?php foreach($get_supplier as $row):?>
+                            <option value="<?php echo $row->id;?>">
+                            <?php echo $row->namevendor;?></option>
+                            <?php endforeach;?>
                         </select>
                     </div>
                     <div class="form-group">
@@ -172,6 +185,7 @@
                         <?= form_open('produk/update_data/' . $datas->id); ?>
                         <?= csrf_field(); ?>
                         <input type="hidden" name="id" value="<?= $datas->id; ?>">
+                        <input type="hidden" name="user_created" value="<?= $datas->user_created; ?>" id="user_created" class="form-control" readonly>
                         <div class="form-group">
                             <label for="kode_produk">Kode Produk</label>
                             <input type="text" name="kode_produk" id="kode_produk" class="form-control" value="<?= $datas->kode_produk; ?>" readonly>
@@ -196,7 +210,6 @@
                         </div>
                         <div class="form-group">
                             <label for="upsub_category">Sub Kategori</label> <br>
-                            <?php echo $datas->sub_category; ?>
                             <select name="upsub_category" id="upsub_category" class="form-control">
                                 <option value="">- Pilih Sub Kategori -</option>
                                 <?php foreach($sub_category as $row):?>
@@ -206,6 +219,20 @@
                                         <option value="<?php echo $row->subcategory_id;?>">
                                     <?php endif;?>
                                 <?php echo $row->subcategory_name;?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="upsupplier">Supplier</label> <br>
+                            <select name="upsupplier" id="upsupplier" class="form-control" required>
+                                <option value="">- Pilih Supplier -</option>
+                                <?php foreach($get_supplier as $row):?>
+                                <?php if($row->id == $datas->supplier):?>
+                                <option value="<?php echo $row->id;?>" selected>
+                                    <?php else: ?>
+                                        <option value="<?php echo $row->id;?>">
+                                    <?php endif;?>
+                                <?php echo $row->namevendor;?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>

@@ -42,6 +42,11 @@ class ProdukModel extends Model
         return "PR".$kd;
 	}
 
+    public function get_supplier()
+    {
+        return $this->db->table('supplier')->get()->getResultObject();
+    }
+
     // func select all data or by id
     public function select_data($id = FALSE)
     {
@@ -55,7 +60,7 @@ class ProdukModel extends Model
             // return $query->getResultObject();
 
             return $this->db->table('produk')
-            ->select('produk.id,produk.kode_produk,produk.name,produk.category,produk.sub_category,produk.merk,produk.kuantitas,produk.satuan,produk.sku,category.category_name,sub_category.subcategory_name')
+            ->select('produk.id,produk.kode_produk,produk.name,produk.category,produk.sub_category, produk.supplier,produk.merk,produk.kuantitas,produk.satuan,produk.sku,produk.user_created ,category.category_name,sub_category.subcategory_name')
             ->join('category', 'produk.category = category.category_id')
             ->join('sub_category', 'produk.sub_category = sub_category.subcategory_id')
             ->orderBy('produk.kode_produk ASC')

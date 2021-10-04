@@ -34,22 +34,24 @@ class Supplier extends BaseController
 
         if ($this->request->getPost()) {
             $rules = [
-                'namevendor' => 'required|alpha_space',
-                'namesales' => 'required|alpha_space',
-                'phone' => 'required|numeric',
-                'email' => 'required|valid_email',
-                'address' => 'required|string',
-                'menyediakan' => 'required|alpha_space',
+                'namevendor'    => 'required|string',
+                'namesales'     => 'required|string',
+                'phone'         => 'required|numeric',
+                'email'         => 'required|valid_email',
+                'address'       => 'required|string',
+                'menyediakan'   => 'required|string',
+                'user_created'  => 'required|numeric',
             ];
 
             if ($this->validate($rules)) {
                 $inserted = [
-                    'namevendor' => $this->request->getPost('namevendor'),
-                    'namesales' => $this->request->getPost('namesales'),
-                    'phone' => $this->request->getPost('phone'),
-                    'email' => $this->request->getPost('email'),
-                    'address' => $this->request->getPost('address'),
-                    'menyediakan' => $this->request->getPost('menyediakan'),
+                    'namevendor'    => $this->request->getPost('namevendor'),
+                    'namesales'     => $this->request->getPost('namesales'),
+                    'phone'         => $this->request->getPost('phone'),
+                    'email'         => $this->request->getPost('email'),
+                    'address'       => $this->request->getPost('address'),
+                    'menyediakan'   => $this->request->getPost('menyediakan'),
+                    'user_created'  => $this->request->getPost('user_created'),
                 ];
 
                 $this->supplierModel->insert($inserted);
@@ -81,23 +83,25 @@ class Supplier extends BaseController
 
         if ($this->request->getPost()) {
             $rules = [
-                'namevendor' => 'required|alpha_space',
-                'namesales' => 'required|alpha_space',
-                'phone' => 'required|numeric',
-                'email' => 'required|valid_email',
-                'address' => 'required|string',
-                'menyediakan' => 'required|alpha_space',
+                'namevendor'    => 'required|string',
+                'namesales'     => 'required|string',
+                'phone'         => 'required|numeric',
+                'email'         => 'required|valid_email',
+                'address'       => 'required|string',
+                'menyediakan'   => 'required|string',
+                'user_created'  => 'required|numeric',
             ];
 
             if ($this->validate($rules)) {
 
                 $inserted = [
-                    'namevendor' => $this->request->getPost('namevendor'),
-                    'namesales' => $this->request->getPost('namesales'),
-                    'phone' => $this->request->getPost('phone'),
-                    'email' => $this->request->getPost('email'),
-                    'address' => $this->request->getPost('address'),
-                    'menyediakan' => $this->request->getPost('menyediakan'),
+                    'namevendor'    => $this->request->getPost('namevendor'),
+                    'namesales'     => $this->request->getPost('namesales'),
+                    'phone'         => $this->request->getPost('phone'),
+                    'email'         => $this->request->getPost('email'),
+                    'address'       => $this->request->getPost('address'),
+                    'menyediakan'   => $this->request->getPost('menyediakan'),
+                    'user_created'  => $this->request->getPost('user_created'),
                 ];
 
                 $this->supplierModel->update($id, $inserted);

@@ -48,6 +48,7 @@
                     <?= form_open_multipart(); ?>
                     <?= csrf_field(); ?>
                     <input type="hidden" name="id" value="<?= $dataById['id']; ?>">
+                    <input type="hidden" name="user_created" value="<?= $dataById['user_created']; ?>">
                     <div class="form-group">
                         <label for="name">Nama Vendor</label>
                         <input type="text" name="namevendor" id="namevendor" class="form-control" value="<?= old('namevendor', $dataById['namevendor']); ?>">

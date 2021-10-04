@@ -47,6 +47,7 @@
 
                     <?= form_open_multipart(); ?>
                     <?= csrf_field(); ?>
+                    <input type="hidden" name="user_created" value="<?php echo user_id(); ?>" id="user_created" class="form-control" readonly>
                     <div class="form-group">
                         <label for="name">Nama Vendor</label>
                         <input type="text" name="namevendor" id="namevendor" class="form-control" value="<?= old('namevendor'); ?>">

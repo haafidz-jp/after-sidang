@@ -22,6 +22,7 @@ class Produk extends BaseController
             'category' => $this->produkModel->get_category(), // select all category
             'sub_category' => $this->produkModel->get_subcategory(), // select all sub category
             'get_kobar' => $this->produkModel->get_kobar(), // produksi kode barang
+            'get_supplier' => $this->produkModel->get_supplier(), // panggil supplier
             
         ];
 
@@ -44,12 +45,14 @@ class Produk extends BaseController
         $rules = $this->validate([
             'kode_produk'   => 'required',
             'name'          => 'required',
+            'user_created'  => 'required',
             'category'      => 'required',
             'sub_category'  => 'required',
             'merk'          => 'required',
             'kuantitas'     => 'required',
             'satuan'        => 'required',
             'sku'           => 'required',
+            'supplier'      => 'required',
         ]);
 
         if (!$rules) {
@@ -60,12 +63,14 @@ class Produk extends BaseController
         $data = [
             'kode_produk'   => $this->request->getPost('kode_produk'),
             'name'          => $this->request->getPost('name'),
+            'user_created'  => $this->request->getPost('user_created'),
             'category'      => $this->request->getPost('category'),
             'sub_category'  => $this->request->getPost('sub_category'),
             'merk'          => $this->request->getPost('merk'),
             'kuantitas'     => $this->request->getPost('kuantitas'),
             'satuan'        => $this->request->getPost('satuan'),
             'sku'           => $this->request->getPost('sku'),
+            'supplier'      => $this->request->getPost('supplier'),
         ];
 
         $this->produkModel->add_data($data);
@@ -86,11 +91,13 @@ class Produk extends BaseController
         $rules = $this->validate([
             'kode_produk'   => 'required',
             'name'          => 'required',
+            'user_created'  => 'required',
             'upcategory'    => 'required',
             'upsub_category'=> 'required',
             'merk'          => 'required',
             'satuan'        => 'required',
             'sku'           => 'required',
+            'upsupplier'    => 'required',
         ]);
 
         if (!$rules) {
@@ -101,11 +108,13 @@ class Produk extends BaseController
         $data = [
             'kode_produk'   => $this->request->getPost('kode_produk'),
             'name'          => $this->request->getPost('name'),
+            'user_created'  => $this->request->getPost('user_created'),
             'category'      => $this->request->getPost('upcategory'),
             'sub_category'  => $this->request->getPost('upsub_category'),
             'merk'          => $this->request->getPost('merk'),
             'satuan'        => $this->request->getPost('satuan'),
             'sku'           => $this->request->getPost('sku'),
+            'supplier'      => $this->request->getPost('upsupplier'),
         ];
 
         $this->produkModel->update_data($id, $data);
