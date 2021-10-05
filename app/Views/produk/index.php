@@ -4,7 +4,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
-            <h1 class="mt-4"><i class="fas fa-box"></i> Produk</h1>
+            <h1 class="mt-4"><i class="fas fa-box"></i> Daftar Produk</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="<?= base_url('dashboard'); ?>">Dashboard</a></li>
                 <li class="breadcrumb-item active"><?= $title; ?></li>
@@ -12,7 +12,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table mr-1"></i>
-                    Tabel Produk
+                    Tabel Daftar Produk
                 </div>
                 <div class="card-body">
                     <a href="" class="btn btn-primary btn-sm mb-2" data-toggle="modal" data-target="#addModal"><i class="fas fa-plus-square"></i> Tambah Data</a>
