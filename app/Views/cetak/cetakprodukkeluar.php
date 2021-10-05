@@ -17,25 +17,25 @@
     <div class="container mt-5">
     <h1 align="center">List Stok Produk Keluar</h1>
         <table cellpadding="0" class="table table-bordered table-striped " border="0.3">
-            <tr>
-                <th>NO.</th>
-                <th>KODE TRANSAKSI</th>
-                <th>TANGGAL</th>
-                <th>KODE PRODUK</th>
-                <th>NAMA PRODUK</th>
-                <th>JUMLAH KELUAR</th>
-                <th>SATUAN</th>
+        <tr>
+                <th style="padding-left:5px;" valign="middle" width="30" align="center">NO.</th>
+                <th style="padding-left:5px;" width="90" align="center">KODE TRANSAKSI</th>
+                <th style="padding-left:5px;" width="90" align="center">TANGGAL</th>
+                <th style="padding-left:5px;" width="90" align="center">KODE PRODUK</th>
+                <th style="padding-left:5px;" width="90" align="center">NAMA PRODUK</th>
+                <th style="padding-left:5px;" width="60" align="center">JUMLAH KELUAR</th>
+                <th style="padding-left:5px;" width="60" align="center" valign="middle">SATUAN</th>
             </tr>
             <?php $no = 1; ?>
             <?php foreach ($pdf_produk as $pp) : ?>
                 <tr>
-                    <td><?= $no++; ?></td>
-                    <td><?= $pp['kode_transaksi']; ?></td>
-                    <td><?= $pp['tanggal']; ?></td>
-                    <td><?= $pp['kode_produk']; ?></td>
-                    <td><?= $pp['name']; ?></td>
-                    <td><?= $pp['jumlah_keluar']; ?></td>
-                    <td><?= $pp['satuan']; ?></td>
+                    <td align="center"><?= $no++; ?></td>
+                    <td align="center"><?= $pp['kode_transaksi']; ?></td>
+                    <td align="center"><?= $pp['tanggal']; ?></td>
+                    <td align="center"><?= $pp['kode_produk']; ?></td>
+                    <td align="center"><?= $pp['name']; ?></td>
+                    <td align="center"><?= $pp['jumlah_keluar']; ?></td>
+                    <td align="center"><?= $pp['satuan']; ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>
