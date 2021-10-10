@@ -39,7 +39,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Aktivitas
+        Aktivitas Stok
     </div>
 
 
@@ -47,14 +47,14 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('/produk_masuk')?>">
         <i class="fas fa-fw fa-box"></i>
-        <span>Produk Masuk</span></a>
+        <span>Stok Produk Masuk</span></a>
     </li>
 
     <!-- Nav Item - Produk Keluar -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('/produk_keluar')?>">
         <i class="fas fa-fw fa-box"></i>
-        <span>Produk Keluar</span></a>
+        <span>Stok Produk Keluar</span></a>
     </li>
 
     <?php if(in_groups('admin')) :?>
