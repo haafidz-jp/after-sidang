@@ -17,7 +17,7 @@ class Produk_Masuk extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Stok Produk Masuk', // Nama Halaman
+            'title' => 'Stok Masuk', // Nama Halaman
             'all_data' => $this->produkMasukModel->select_data(), // selecting all data
             'get_kode_transaksi' => $this->produkMasukModel->get_kode_transaksi(),
             'get_produk' => $this->produkMasukModel->get_produk(),

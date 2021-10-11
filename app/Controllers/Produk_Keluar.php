@@ -17,7 +17,7 @@ class Produk_Keluar extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Stok Produk Keluar', // Nama Halaman
+            'title' => 'Stok Keluar', // Nama Halaman
             'all_data' => $this->produkKeluarModel->select_data(), // selecting all data
             'get_kode_transaksi' => $this->produkKeluarModel->get_kode_transaksi(),
             'get_produk' => $this->produkKeluarModel->get_produk(),

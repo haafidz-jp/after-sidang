@@ -43,18 +43,18 @@
     </div>
 
 
-    <!-- Nav Item - Produk Masuk -->
+    <!-- Nav Item - Stok Masuk -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('/produk_masuk')?>">
         <i class="fas fa-fw fa-box"></i>
-        <span>Stok Produk Masuk</span></a>
+        <span>Stok Masuk</span></a>
     </li>
 
-    <!-- Nav Item - Produk Keluar -->
+    <!-- Nav Item - Stok Keluar -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('/produk_keluar')?>">
         <i class="fas fa-fw fa-box"></i>
-        <span>Stok Produk Keluar</span></a>
+        <span>Stok Keluar</span></a>
     </li>
 
     <?php if(in_groups('admin')) :?>
