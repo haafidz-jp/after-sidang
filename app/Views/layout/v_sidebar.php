@@ -93,8 +93,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
                 <a class="collapse-item" href=<?= base_url('/cetakproduk'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Daftar Produk</a>
-                <a class="collapse-item" href=<?= base_url('/cetakmasuk'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Produk Masuk</a>
-                <a class="collapse-item" href=<?= base_url('/cetakkeluar'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Produk Keluar</a>
+                <a class="collapse-item" href=<?= base_url('/cetakmasuk'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Stok Masuk</a>
+                <a class="collapse-item" href=<?= base_url('/cetakkeluar'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Stok Keluar</a>
                 <?php if(in_groups('admin')) :?>
                 <a class="collapse-item" href=<?= base_url('/cetaksupplier'); ?>> <i class="fas fa-fw fa-file-pdf"></i> Daftar Supplier</a>
                 <?php endif; ?>
