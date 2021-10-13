@@ -17,12 +17,12 @@ class Produk extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Daftar Produk', // Nama Halaman
-            'all_data' => $this->produkModel->select_data(), // Select All Data
-            'category' => $this->produkModel->get_category(), // select all category
-            'sub_category' => $this->produkModel->get_subcategory(), // select all sub category
-            'get_kobar' => $this->produkModel->get_kobar(), // produksi kode barang
-            'get_supplier' => $this->produkModel->get_supplier(), // panggil supplier
+            'title'         => 'Daftar Produk', // Nama Halaman
+            'all_data'      => $this->produkModel->select_data(), // Select All Data
+            'category'      => $this->produkModel->get_category(), // select all category
+            'sub_category'  => $this->produkModel->get_subcategory(), // select all sub category
+            'get_kobar'     => $this->produkModel->get_kobar(), // produksi kode barang
+            'get_supplier'  => $this->produkModel->get_supplier(), // panggil supplier
             
         ];
 

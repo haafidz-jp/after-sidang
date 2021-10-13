@@ -17,10 +17,10 @@ class Produk_Masuk extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Stok Masuk', // Nama Halaman
-            'all_data' => $this->produkMasukModel->select_data(), // selecting all data
-            'get_kode_transaksi' => $this->produkMasukModel->get_kode_transaksi(),
-            'get_produk' => $this->produkMasukModel->get_produk(),
+            'title'                 => 'Stok Masuk', // Nama Halaman
+            'all_data'              => $this->produkMasukModel->select_data(), // selecting all data
+            'get_kode_transaksi'    => $this->produkMasukModel->get_kode_transaksi(),
+            'get_produk'            => $this->produkMasukModel->get_produk(),
             
         ];
 
@@ -46,6 +46,7 @@ class Produk_Masuk extends BaseController
             'tanggal'       => 'required',
             'kode_produk'   => 'required',
             'jumlah_masuk'  => 'required',
+            'user_created'  => 'required',
         ]);
 
         if (!$rules) {
@@ -58,6 +59,7 @@ class Produk_Masuk extends BaseController
             'tanggal'       => $this->request->getPost('tanggal'),
             'kode_produk'   => $this->request->getPost('kode_produk'),
             'jumlah_masuk'  => $this->request->getPost('jumlah_masuk'),
+            'user_created'  => $this->request->getPost('user_created'),
         ];
 
         $this->produkMasukModel->add_data($data);
