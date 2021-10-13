@@ -45,6 +45,7 @@ class Produk_Keluar extends BaseController
             'tanggal'       => 'required',
             'kode_produk'   => 'required',
             'jumlah_keluar'  => 'required',
+            'user_created'  => 'required',
         ]);
 
         if (!$rules) {
@@ -57,6 +58,7 @@ class Produk_Keluar extends BaseController
             'tanggal'       => $this->request->getPost('tanggal'),
             'kode_produk'   => $this->request->getPost('kode_produk'),
             'jumlah_keluar' => $this->request->getPost('jumlah_keluar'),
+            'user_created'  => $this->request->getPost('user_created'),
         ];
 
         $this->produkKeluarModel->add_data($data);
