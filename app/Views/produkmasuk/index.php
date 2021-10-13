@@ -89,6 +89,9 @@
                     <?= form_open('produk_masuk/add_data'); ?>
                     <?= csrf_field(); ?>
                     <div class="form-group">
+                        <input type="hidden" name="user_created" value=" <?php echo user_id(); ?>" id="user_created" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
                         <label for="kode_transaksi">Kode Transaksi</label>
                         <input type="text" name="kode_transaksi" value="<?php echo $get_kode_transaksi ?>" id="kode_transaksi" class="form-control" readonly required>
                     </div>
