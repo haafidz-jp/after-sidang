@@ -17,7 +17,7 @@ class CetakProdukMasuk extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Cetak Produk Masuk',
+            'title' => 'Cetak Stok Masuk',
         ];
         
         return view('cetak/viewprodukmasuk', $data);
