@@ -42,12 +42,6 @@ class ProdukKeluarModel extends Model
     {
         if ($id == FALSE) {
             // return $this->builder->get()->getResultObject();
-            
-            // $query = $this->db->query('SELECT produk_keluar.kode_transaksi, produk_keluar.tanggal, 
-            // produk_keluar.kode_produk, produk_keluar.jumlah_keluar, produk.kode_produk, produk.name, 
-            // produk.kuantitas, produk.satuan FROM produk_keluar JOIN produk 
-            // ON produk_keluar.kode_produk = produk.kode_produk ORDER BY produk_keluar.kode_transaksi ASC');
-            // return $query->getResultObject();
 
             return $this->db->table('produk_keluar')
             ->select('produk_keluar.kode_transaksi,produk_keluar.tanggal,produk_keluar.kode_produk,produk_keluar.jumlah_keluar,produk.kode_produk,produk.name,produk.kuantitas,produk.satuan')

@@ -43,12 +43,6 @@ class ProdukMasukModel extends Model
         if ($id == FALSE) {
             // default // return $this->builder->get()->getResultObject();
 
-            // $query = $this->db->query('SELECT produk_masuk.kode_transaksi, produk_masuk.tanggal, 
-            // produk_masuk.kode_produk, produk_masuk.jumlah_masuk, produk.kode_produk, produk.name, 
-            // produk.kuantitas, produk.satuan FROM produk_masuk JOIN produk 
-            // ON produk_masuk.kode_produk = produk.kode_produk ORDER BY produk_masuk.kode_transaksi ASC');
-            // return $query->getResultObject();
-
             return $this->db->table('produk_masuk')
             ->select('produk_masuk.kode_transaksi,produk_masuk.tanggal,produk_masuk.kode_produk,produk_masuk.jumlah_masuk,produk.kode_produk,produk.name,produk.kuantitas,produk.satuan')
             ->join('produk', 'produk_masuk.kode_produk = produk.kode_produk')

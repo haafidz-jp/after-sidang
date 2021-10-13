@@ -53,12 +53,6 @@ class ProdukModel extends Model
         if ($id == FALSE) {
             // default // return $this->builder->get()->getResultObject();
 
-            // $query = $this->db->query('SELECT produk.id, produk.kode_produk, produk.name, produk.category, 
-            // produk.sub_category, produk.merk, produk.kuantitas, produk.satuan, produk.sku , category.category_name, 
-            // sub_category.subcategory_name FROM produk JOIN category ON produk.category = category.category_id JOIN sub_category 
-            // ON produk.sub_category = sub_category.subcategory_id ORDER BY produk.kode_produk ASC');
-            // return $query->getResultObject();
-
             return $this->db->table('produk')
             ->select('produk.id,produk.kode_produk,produk.name,produk.category,produk.sub_category, produk.supplier,produk.merk,produk.kuantitas,produk.satuan,produk.sku,produk.user_created ,category.category_name,sub_category.subcategory_name')
             ->join('category', 'produk.category = category.category_id')
