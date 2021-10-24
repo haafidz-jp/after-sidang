@@ -71,10 +71,10 @@
                                         <td><?= esc($datas->satuan); ?></td>
                                         <td><?= esc($datas->sku); ?></td>
                                         <td class="text-center" width="20%">
-                                            <a href="" class="btn btn-success btn-sm mb-1" data-toggle="modal" data-target="#updateModal<?= $datas->id; ?>">
+                                            <a href="" class="btn btn-success btn-sm mb-1" data-toggle="modal" data-target="#updateModal<?= $datas->id_produk; ?>">
                                                 Update
                                             </a>
-                                            <a href="" class="btn btn-danger btn-sm mb-1" data-toggle="modal" data-target="#deleteModal<?= $datas->id; ?>">
+                                            <a href="" class="btn btn-danger btn-sm mb-1" data-toggle="modal" data-target="#deleteModal<?= $datas->id_produk; ?>">
                                                 Delete
                                             </a>
                                         </td>
@@ -133,7 +133,7 @@
                         <select name="supplier" id="supplier" class="form-control" required>
                             <option value="">No Selected</option>
                             <?php foreach($get_supplier as $row):?>
-                            <option value="<?php echo $row->id;?>">
+                            <option value="<?php echo $row->id_supplier;?>">
                             <?php echo $row->namevendor;?></option>
                             <?php endforeach;?>
                         </select>
@@ -170,7 +170,7 @@
 
     <!-- Update modal -->
     <?php foreach ($all_data as $datas) : ?>
-        <div class="modal fade" id="updateModal<?= $datas->id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="updateModal<?= $datas->id_produk; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -180,9 +180,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <?= form_open('produk/update_data/' . $datas->id); ?>
+                        <?= form_open('produk/update_data/' . $datas->id_produk); ?>
                         <?= csrf_field(); ?>
-                        <input type="hidden" name="id" value="<?= $datas->id; ?>">
+                        <input type="hidden" name="id" value="<?= $datas->id_produk; ?>">
                         <input type="hidden" name="user_created" value="<?= $datas->user_created; ?>" id="user_created" class="form-control" readonly>
                         <div class="form-group">
                             <label for="kode_produk">Kode Produk</label>
@@ -225,10 +225,10 @@
                             <select name="upsupplier" id="upsupplier" class="form-control" required>
                                 <option value="">- Pilih Supplier -</option>
                                 <?php foreach($get_supplier as $row):?>
-                                <?php if($row->id == $datas->supplier):?>
-                                <option value="<?php echo $row->id;?>" selected>
+                                <?php if($row->id_supplier == $datas->supplier):?>
+                                <option value="<?php echo $row->id_supplier;?>" selected>
                                     <?php else: ?>
-                                        <option value="<?php echo $row->id;?>">
+                                        <option value="<?php echo $row->id_supplier;?>">
                                     <?php endif;?>
                                 <?php echo $row->namevendor;?></option>
                                 <?php endforeach;?>
@@ -278,7 +278,7 @@
 
     <!-- Delete modal -->
     <?php foreach ($all_data as $datas) : ?>
-        <div class="modal fade" id="deleteModal<?= $datas->id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteModal<?= $datas->id_produk; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -288,9 +288,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <?= form_open('produk/delete_data/' . $datas->id); ?>
+                        <?= form_open('produk/delete_data/' . $datas->id_produk); ?>
                         <?= csrf_field(); ?>
-                        <input type="hidden" name="id" value="<?= $datas->id; ?>">
+                        <input type="hidden" name="id" value="<?= $datas->id_produk; ?>">
                         <p>Click the Delete button to delete data (<?= $datas->name; ?>)..!!!</p>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>

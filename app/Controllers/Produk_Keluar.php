@@ -44,7 +44,7 @@ class Produk_Keluar extends BaseController
             'kode_transaksi'=> 'required',
             'tanggal'       => 'required',
             'kode_produk'   => 'required',
-            'jumlah_keluar'  => 'required',
+            'jumlah_keluar' => 'required',
             'user_created'  => 'required',
         ]);
 

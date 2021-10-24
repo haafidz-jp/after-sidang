@@ -78,14 +78,14 @@ class Produk extends BaseController
         return redirect()->back();
     }
 
-    public function delete_data($id)
+    public function delete_data($id_produk)
     {
-        $this->produkModel->delete_data($id);
+        $this->produkModel->delete_data($id_produk);
         session()->setFlashData('sukses', 'data has been deleted from database.');
         return redirect()->back();
     }
 
-    public function update_data($id)
+    public function update_data($id_produk)
     {
         // validation
         $rules = $this->validate([
@@ -117,7 +117,7 @@ class Produk extends BaseController
             'supplier'      => $this->request->getPost('upsupplier'),
         ];
 
-        $this->produkModel->update_data($id, $data);
+        $this->produkModel->update_data($id_produk, $data);
         session()->setFlashData('sukses', 'data has been updated from database.');
         return redirect()->back();
     }

@@ -27,11 +27,13 @@ class CetakProdukKeluar extends BaseController
     {
         $data = [
             'pdf_produk' => $this->db->table('produk')
-            ->select('produk_keluar.kode_transaksi,produk_keluar.tanggal,produk_keluar.kode_produk,produk.name,produk_keluar.jumlah_keluar,produk.satuan')
+            ->select('produk_keluar.kode_transaksi,produk_keluar.tanggal,produk_keluar.kode_produk,produk.name,produk_keluar.jumlah_keluar,produk.satuan,produk.kuantitas')
             ->join('produk_keluar', 'produk.kode_produk = produk_keluar.kode_produk')
             ->where('produk_keluar.tanggal >=', $this->request->getVar('tanggal_awal'))
             ->where('produk_keluar.tanggal <=', $this->request->getVar('tanggal_akhir'))
             ->orderBy('produk_keluar.kode_transaksi ASC')->get()->getResultArray(),
+            'tanggal_awal' => $this->request->getVar('tanggal_awal'),
+            'tanggal_akhir' => $this->request->getVar('tanggal_akhir'),
         ];
 
         // $html = view('export/pdf', $data);

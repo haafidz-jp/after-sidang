@@ -13,18 +13,35 @@
 </head>
 
 <body>
+    <div class="container">
+        <h1 align="center">CV. MULIA JAYA AGUNG</h1>
+        <h3 align="center">List Stok Produk keluar</h3>
 
-    <div class="container mt-5">
-    <h1 align="center">List Stok Produk Keluar</h1>
+        <?php  
+        if ($tanggal_awal==$tanggal_akhir) { ?>
+            <div align="center">
+                Tanggal <?php echo $tanggal_awal;; ?>
+            </div>
+        <?php
+        } else { ?>
+            <div align="center">
+                Tanggal <?php echo $tanggal_awal; ?> s.d. <?php echo $tanggal_akhir; ?>
+            </div>
+        <?php
+        }
+        ?>
+        <p align="center">Di cetak oleh : <?= user()->username; ?></p>
+        
         <table cellpadding="0" class="table table-bordered table-striped " border="0.3">
         <tr>
-                <th style="padding-left:5px;" valign="middle" width="30" align="center">NO.</th>
-                <th style="padding-left:5px;" width="90" align="center">KODE TRANSAKSI</th>
-                <th style="padding-left:5px;" width="90" align="center">TANGGAL</th>
-                <th style="padding-left:5px;" width="90" align="center">KODE PRODUK</th>
-                <th style="padding-left:5px;" width="90" align="center">NAMA PRODUK</th>
-                <th style="padding-left:5px;" width="60" align="center">JUMLAH KELUAR</th>
-                <th style="padding-left:5px;" width="60" align="center" valign="middle">SATUAN</th>
+                <th style="padding:auto;" valign="middle" width="30" align="center">NO.</th>
+                <th style="padding:auto;" width="90" align="center">KODE TRANSAKSI</th>
+                <th style="padding:auto;" width="90" align="center">TANGGAL</th>
+                <th style="padding:auto;" width="70" align="center">KODE PRODUK</th>
+                <th style="padding:auto;" width="70" align="center">NAMA PRODUK</th>
+                <th style="padding:auto;" width="60" align="center">JUMLAH KELUAR</th>
+                <th style="padding:auto;" width="60" align="center" valign="middle">SATUAN</th>
+                <th style="padding:auto;" width="60" align="center" valign="middle">SISA STOK</th>
             </tr>
             <?php $no = 1; ?>
             <?php foreach ($pdf_produk as $pp) : ?>
@@ -36,6 +53,7 @@
                     <td align="center"><?= $pp['name']; ?></td>
                     <td align="center"><?= $pp['jumlah_keluar']; ?></td>
                     <td align="center"><?= $pp['satuan']; ?></td>
+                    <td align="center"><?= $pp['kuantitas']; ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>

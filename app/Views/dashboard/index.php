@@ -34,6 +34,7 @@
         </div>
     </div>
 
+    <?php if(in_groups('admin')) :?>
     <!-- CARD Jumlah Supplier -->
     <div class="col-xl-4 col-md-6 mb-4">
         <div class="card border-left-success shadow h-100 py-2">
@@ -51,6 +52,7 @@
             </div>
         </div>
     </div>
+    <?php endif; ?>
 
     <!-- CARD Jumlah Barng Habis (PAK) -->
     <div class="col-xl-4 col-md-6 mb-4">
