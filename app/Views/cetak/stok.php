@@ -17,7 +17,7 @@
 
     <div class="container">
             <h1 align="center">CV. MULIA JAYA AGUNG</h1>
-            <h2 align="center">List Produk</h2>
+            <h2 align="center">List Daftar Produk</h2>
             <p align="center"><?php echo "Tanggal " . date("d-m-Y"); ?></p> 
             <p align="center">Di Cetak oleh : <?= user()->username; ?></p> 
 

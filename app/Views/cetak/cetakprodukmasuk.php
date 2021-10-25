@@ -41,7 +41,7 @@
                 <th style="padding:auto;" width="70" align="center">NAMA PRODUK</th>
                 <th style="padding:auto;" width="60" align="center">JUMLAH MASUK</th>
                 <th style="padding:auto;" width="60" align="center" valign="middle">SATUAN</th>
-                <th style="padding:auto;" width="60" align="center" valign="middle">JUMLAH STOK</th>
+                <th style="padding:auto;" width="60" align="center" valign="middle">SISA STOK</th>
             </tr>
             <?php $no = 1; ?>
             <?php foreach ($pdf_produk as $pp) : ?>
