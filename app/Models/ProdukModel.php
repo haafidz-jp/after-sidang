@@ -48,20 +48,20 @@ class ProdukModel extends Model
     }
 
     // func select all data or by id
-    public function select_data($id_produk = FALSE)
+    public function select_data($id = FALSE)
     {
-        if ($id_produk == FALSE) {
+        if ($id == FALSE) {
             // default // return $this->builder->get()->getResultObject();
 
             return $this->db->table('produk')
-            ->select('produk.id_produk,produk.kode_produk,produk.name,produk.category,produk.sub_category, produk.supplier,produk.merk,produk.kuantitas,produk.satuan,produk.sku,produk.user_created ,category.category_name,sub_category.subcategory_name')
+            ->select('produk.id,produk.kode_produk,produk.name,produk.category,produk.sub_category, produk.supplier,produk.merk,produk.kuantitas,produk.satuan,produk.sku,produk.user_created ,category.category_name,sub_category.subcategory_name')
             ->join('category', 'produk.category = category.category_id')
             ->join('sub_category', 'produk.sub_category = sub_category.subcategory_id')
             ->orderBy('produk.kode_produk ASC')
             ->get()->getResultObject();
         }
 
-        return $this->builder->getWhere(['id_produk' => $id_produk])->getRow();
+        return $this->builder->getWhere(['id' => $id])->getRow();
     }
 
     // func insert data to db
@@ -71,16 +71,16 @@ class ProdukModel extends Model
     }
 
     // func delete data from db
-    public function delete_data($id_produk)
+    public function delete_data($id)
     {
-        $this->builder->where('id_produk', $id_produk);
+        $this->builder->where('id', $id);
         $this->builder->delete();
     }
 
     // func update data from db
-    public function update_data($id_produk, $data)
+    public function update_data($id, $data)
     {
-        $this->builder->where('id_produk', $id_produk);
+        $this->builder->where('id', $id);
         $this->builder->update($data);
     }
 }

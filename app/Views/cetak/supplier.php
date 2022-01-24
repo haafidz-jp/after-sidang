@@ -15,10 +15,7 @@
 <body>
 
     <div class="container mt-5">
-    <h1 align="center">CV. MULIA JAYA AGUNG</h1>
-            <h2 align="center">List Daftar List Supplier</h2>
-            <p align="center"><?php echo "Tanggal " . date("d-m-Y"); ?></p> 
-            <p align="center">Di Cetak oleh : <?= user()->username; ?></p> 
+    <h1 align="center">List Daftar Supplier</h1>
         <table cellpadding="6" class="table table-bordered table-striped " border="0.2">
                 <tr>
                     <th style="padding-left:5px;" valign="middle" width="30" align="center">NO</th>

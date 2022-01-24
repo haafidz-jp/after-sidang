@@ -65,19 +65,19 @@ class Supplier extends BaseController
         return view('supplier/form_add', $data);
     }
 
-    public function delete_data($id_supplier)
+    public function delete_data($id)
     {
 
-        $this->supplierModel->delete($id_supplier);
+        $this->supplierModel->delete($id);
         session()->setFlashData('sukses', 'data has been deleted from database.');
         return redirect()->to('/supplier');
     }
 
-    public function update_data($id_supplier)
+    public function update_data($id)
     {
         $data = [
             'title' => 'Update Data',
-            'dataById' => $this->supplierModel->where('id_supplier', $id_supplier)->first(),
+            'dataById' => $this->supplierModel->where('id', $id)->first(),
             'category' => $this->supplierModel->get_category(), // select all category
         ];
 
@@ -104,7 +104,7 @@ class Supplier extends BaseController
                     'user_created'  => $this->request->getPost('user_created'),
                 ];
 
-                $this->supplierModel->update($id_supplier, $inserted);
+                $this->supplierModel->update($id, $inserted);
                 session()->setFlashData('sukses', 'data has been updated from database');
                 return redirect()->to('/supplier');
             } else {

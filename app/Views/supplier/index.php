@@ -67,10 +67,10 @@
                                         <td><?= esc($datas['address']); ?></td>
                                         <td><?= esc($datas['menyediakan']); ?></td>
                                         <td class="text-center" width="20%">
-                                            <a href="<?= base_url('supplier/update_data/'.$datas['id_supplier']); ?>" class="btn btn-success btn-sm mb-1">
+                                            <a href="<?= base_url('supplier/update_data/'.$datas['id']); ?>" class="btn btn-success btn-sm mb-1">
                                                 Update
                                             </a>
-                                            <a href="" class="btn btn-danger btn-sm mb-1" data-toggle="modal" data-target="#deleteModal<?= $datas['id_supplier']; ?>">
+                                            <a href="" class="btn btn-danger btn-sm mb-1" data-toggle="modal" data-target="#deleteModal<?= $datas['id']; ?>">
                                                 Delete
                                             </a>
                                         </td>
@@ -86,7 +86,7 @@
 
     <!-- Delete modal -->
     <?php foreach ($all_data as $datas) : ?>
-    <div class="modal fade" id="deleteModal<?= $datas['id_supplier']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteModal<?= $datas['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -96,9 +96,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <?= form_open('supplier/delete_data/'.$datas['id_supplier']); ?>
+                    <?= form_open('supplier/delete_data/'.$datas['id']); ?>
                     <?= csrf_field(); ?>
-                    <input type="hidden" name="id" value="<?= $datas['id_supplier']; ?>">
+                    <input type="hidden" name="id" value="<?= $datas['id']; ?>">
                     <p>Click the submit button to delete data (<?= $datas['namesales']; ?>)..!!!</p>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
